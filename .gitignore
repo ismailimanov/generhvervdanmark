@@ -1,2 +1,6 @@
 .idea
 prepros-6.config
+img/header.mp4
+/img/header.mp4
+.DS_Store
+*.mp4

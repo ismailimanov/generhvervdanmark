@@ -1,0 +1,11 @@
+// Responsive CSS
+
+@media only screen and (max-width: 980px){
+  .headerContainer--video {
+    display: none;
+  }
+
+  .headerContainer--image {
+    display: block;
+  }
+}
