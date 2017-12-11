@@ -62,49 +62,52 @@ header {
       align-items: center; }
       header .grid .menuContainer--menu {
         list-style: none; }
-        header .grid .menuContainer--menu li {
-          list-style: none;
-          display: inline;
-          text-transform: uppercase;
-          color: #fff;
-          padding: 0 10px;
-          position: relative;
-          -webkit-transition: all .3s ease-in-out;
-          -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-          cursor: pointer; }
-          header .grid .menuContainer--menu li::before {
+        header .grid .menuContainer--menu a {
+          color: inherit;
+          text-decoration: none; }
+          header .grid .menuContainer--menu a li {
+            list-style: none;
+            display: inline;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 0 10px;
+            position: relative;
+            -webkit-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            cursor: pointer; }
+            header .grid .menuContainer--menu a li::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: 28px;
+              top: -5px;
+              background: rgba(255, 255, 255, 0.2);
+              width: 100%;
+              z-index: -1;
+              -webkit-transition: all .5s ease-in-out;
+              -o-transition: all .5s ease-in-out;
+              transition: all .5s ease-in-out; }
+            header .grid .menuContainer--menu a li:hover::before {
+              bottom: -4px; }
+          header .grid .menuContainer--menu a li.btn::before {
             content: "";
             position: absolute;
             left: 0;
-            bottom: 28px;
-            top: -5px;
+            bottom: -4px;
+            top: -5px !important;
             background: rgba(255, 255, 255, 0.2);
             width: 100%;
             z-index: -1;
             -webkit-transition: all .5s ease-in-out;
             -o-transition: all .5s ease-in-out;
-            transition: all .5s ease-in-out; }
-          header .grid .menuContainer--menu li:hover::before {
-            bottom: -4px; }
-        header .grid .menuContainer--menu li.btn::before {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -4px;
-          top: -5px !important;
-          background: rgba(255, 255, 255, 0.2);
-          width: 100%;
-          z-index: -1;
-          -webkit-transition: all .5s ease-in-out;
-          -o-transition: all .5s ease-in-out;
-          transition: all .5s ease-in-out;
-          -webkit-box-shadow: inset 0 0 0 2px #FFF;
-          box-shadow: inset 0 0 0 2px #FFF; }
-        header .grid .menuContainer--menu li.btn:hover::before {
-          background: white; }
-        header .grid .menuContainer--menu li.btn:hover {
-          color: #000; }
+            transition: all .5s ease-in-out;
+            -webkit-box-shadow: inset 0 0 0 2px #FFF;
+            box-shadow: inset 0 0 0 2px #FFF; }
+          header .grid .menuContainer--menu a li.btn:hover::before {
+            background: white; }
+          header .grid .menuContainer--menu a li.btn:hover {
+            color: #000; }
 
 .sticky {
   background: #FFF;
@@ -155,7 +158,22 @@ header {
   width: 100%;
   height: 100vh;
   background: #000;
-  overflow: hidden; }
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center; }
   .headerContainer--image {
     height: 100vh;
     width: 100%;
@@ -164,7 +182,9 @@ header {
     background-position: 50% 50%;
     display: none; }
   .headerContainer--video {
-    position: relative; }
+    position: relative;
+    width: 100%;
+    height: 100%; }
     .headerContainer--video video {
       min-width: 100%;
       min-height: 100%; }
@@ -244,6 +264,8 @@ header {
   background: #FFF;
   padding-top: 20px;
   padding-bottom: 40px; }
+  .info--left {
+    margin-bottom: 1em; }
   .info h1 {
     font-weight: 600;
     font-size: 1.3em;
@@ -289,6 +311,12 @@ header {
       .reviews--box .content p {
         text-align: justify;
         line-height: 1.1em; }
+
+footer {
+  background: #212121;
+  color: #FFF;
+  text-align: center;
+  padding-bottom: 20px; }
 
 @-webkit-keyframes arrow {
   0% {

@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ismail
- * Date: 07/12/2017
- * Time: 21.37
- */
+<footer>
+    <div class="grid grid-pad">
+        <div class="col-1-1">&copy; Copyright Generhverv Danmark 2017. Alle rettigheder forbeholdes.</div>
+    </div>
+</footer>
+</body>
+</html>

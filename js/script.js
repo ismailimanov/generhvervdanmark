@@ -5,7 +5,7 @@
 $(document).ready(function(){
     $('#headerContainer--arrow').click(function(){
         $('html,body').animate({
-            scrollTop: $('#steps').offset().top - 10
+            scrollTop: $('#steps').offset().top - 110
         }, 500);
     });
 
