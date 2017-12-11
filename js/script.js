@@ -1,7 +1,7 @@
 /**
  * Created by ismail on 07/12/2017.
  */
-<<<<<<< HEAD
+
 $(document).ready(function(){
     $('#headerContainer--arrow').click(function(){
         $('html,body').animate({
@@ -22,5 +22,3 @@ $(document).ready(function(){
         }
     });
 });
-=======
->>>>>>> 5c057f204b57577ebd6ae58b95fca4657372f36c
