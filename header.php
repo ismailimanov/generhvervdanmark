@@ -23,17 +23,17 @@
     <div class="grid grid-pad">
         <div class="col-3-12 logoContainer">
             <div class="content">
-                <div class="logoContainer--logo"></div>
+                <a href="forside"><div class="logoContainer--logo"></div></a>
             </div>
         </div>
         <div class="col-9-12 menuContainer">
             <div class="content">
                 <ul class="menuContainer--menu">
-                    <a href="forside"><li>Forside</li></a>
-                    <a href="om-os"><li>Om Os</li></a>
-                    <a href="kontakt-os"><li>Kontakt Os</li></a>
-                    <a href="log-ind"><li class="btn">Log Ind</li></a>
-                    <a href="tilmeld-dig"><li class="btn">Tilmed dig</li></a>
+                    <li><a href="forside">Forside</a></li>
+                    <li><a href="om-os">Om Os</a></li>
+                    <li><a href="kontakt-os">Kontakt Os</a></li>
+                    <li class="btn"><a href="log-ind">Log Ind</a></li>
+                    <li class="btn"><a href="tilmeld-dig">Tilmed dig</a></li>
                 </ul>
             </div>
         </div>

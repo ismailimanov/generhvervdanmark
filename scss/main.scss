@@ -53,59 +53,64 @@ header {
       &--menu {
         list-style: none;
 
-        a {
-          color: inherit;
-          text-decoration: none;
+        li {
+          list-style: none;
+          display: inline;
+          text-transform: uppercase;
+          color: #fff;
+          padding: 0 10px;
+          position: relative;
+          transition: all .3s ease-in-out;
+          cursor: pointer;
 
-          li {
-            list-style: none;
-            display: inline;
-            text-transform: uppercase;
-            color: #fff;
-            padding: 0 10px;
-            position: relative;
-            transition: all .3s ease-in-out;
-            cursor: pointer;
-
-            &::before {
-              content: "";
-              position: absolute;
-              left: 0;
-              bottom: 28px;
-              top: -5px;
-              background: rgba(255, 255, 255, .2);
-              width: 100%;
-              z-index: -1;
-              transition: all .5s ease-in-out;
-            }
-
-            &:hover::before {
-              bottom: -4px;
-            }
+          a {
+            color: inherit;
+            text-decoration: none;
           }
 
-          li.btn {
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 28px;
+            top: -5px;
+            background: rgba(255, 255, 255, .2);
+            width: 100%;
+            z-index: -1;
+            transition: all .5s ease-in-out;
+          }
 
-            &::before {
-              content: "";
-              position: absolute;
-              left: 0;
-              bottom: -4px;
-              top: -5px !important;
-              background: rgba(255, 255, 255, .2);
-              width: 100%;
-              z-index: -1;
-              transition: all .5s ease-in-out;
-              box-shadow: inset 0 0 0 2px #FFF;
-            }
+          &:hover::before {
+            bottom: -4px;
+          }
+        }
 
-            &:hover::before {
-              background: rgba(255, 255, 255, 1);
-            }
+        li.btn {
+          margin-right: 10px;
 
-            &:hover {
-              color: #000;
-            }
+          &:last-of-type {
+            margin-right: 0;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            top: -5px !important;
+            background: rgba(255, 255, 255, .2);
+            width: 100%;
+            z-index: -1;
+            transition: all .5s ease-in-out;
+            box-shadow: inset 0 0 0 2px #FFF;
+          }
+
+          &:hover::before {
+            background: rgba(255, 255, 255, 1);
+          }
+
+          &:hover {
+            color: #000;
           }
         }
       }
@@ -229,21 +234,27 @@ header {
     .arrow {
       position: absolute;
       bottom: 10px;
-      padding: 5px;
-      border: 0px solid #FFF;
-      border-radius: 100%;
+
       animation: arrow 3s infinite;
       transition: all .3s ease-in-out;
       opacity: .3;
 
+      display: block;
+      width: 100%;
+      text-align: center;
+
       i {
         color: #FFF;
         font-size: 1.4em;
-      }
+        border: 0px solid #FFF;
+        border-radius: 100%;
+        transition: all .3s ease-in-out;
+        padding: 5px;
 
-      &:hover {
-        border: 2px solid #FFF;
-        cursor: pointer;
+        &:hover {
+          border: 2px solid #FFF;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -329,7 +340,7 @@ header {
       width: 100%;
       box-shadow: 0px 7px 5px -5px darken($pageColor, 30);
       margin-bottom: .5em;
-      min-height: 195px;
+      min-height: 200px;
 
       h2 {
         font-weight: 600;

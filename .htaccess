@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^forside$ index\.php
+RewriteRule ^om-os omos\.php
+RewriteRule ^kontakt-os kontaktos\.php
