@@ -357,6 +357,61 @@ header {
   }
 }
 
+.halfheader {
+  width: 100vw;
+  height: 50vh;
+  background: url("https://static.pexels.com/photos/266044/pexels-photo-266044.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 5em;
+    color: #FFF;
+    text-shadow: 0px 0px 7px rgba(0,0,0,.6);
+    z-index: 5;
+  }
+
+  &--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.5);
+    z-index: 0;
+  }
+}
+
+.aboutContainer {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  h1 {
+    font-weight: 700;
+    font-size: 1.5em;
+    margin-bottom: .5em;
+  }
+
+  p {
+    font-size: 1.1em;
+    text-align: justify;
+    margin-bottom: .6em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
 footer {
   background: $greyColor;
   color: #FFF;
