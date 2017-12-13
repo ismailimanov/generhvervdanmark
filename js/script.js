@@ -21,4 +21,8 @@ $(document).ready(function(){
             }
         }
     });
+
+    $('#menuTrigger').click(function(){
+        $('.mobileMenu').toggleClass("menuOpen");
+    });
 });

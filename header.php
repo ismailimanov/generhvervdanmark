@@ -19,6 +19,14 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:500,600,700" rel="stylesheet">
 </head>
 <body>
+<div class="mobileMenu">
+    <div class="mobileMenu--item">Forside</div>
+    <div class="mobileMenu--item">Om Os</div>
+    <div class="mobileMenu--item">Kontakt Os</div>
+    <div class="mobileMenu--item">Log Ind</div>
+    <div class="mobileMenu--item">Tilmeld Dig</div>
+</div>
+<div class="pageContainer">
 <header>
     <div class="grid grid-pad">
         <div class="col-3-12 logoContainer">
@@ -35,6 +43,9 @@
                     <li class="btn"><a href="log-ind">Log Ind</a></li>
                     <li class="btn"><a href="tilmeld-dig">Tilmed dig</a></li>
                 </ul>
+                <div class="menuContainer--mobilemenu" id="menuTrigger">
+                    <i class="fa fa-bars"></i>
+                </div>
             </div>
         </div>
     </div>

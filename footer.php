@@ -3,5 +3,6 @@
         <div class="col-1-1">&copy; Copyright Generhverv Danmark 2017. Alle rettigheder forbeholdes.</div>
     </div>
 </footer>
+</div>
 </body>
 </html>

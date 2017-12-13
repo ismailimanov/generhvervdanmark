@@ -9,3 +9,21 @@
     display: block;
   }
 }
+
+@media only screen and (max-width: 830px){
+  .menuContainer--menu {
+    display: none;
+  }
+
+  .menuContainer {
+    width: 100%;
+  }
+
+  .menuContainer--mobilemenu {
+    display: block !important;
+  }
+
+  .sticky .menuContainer--mobilemenu i {
+    color: #000;
+  }
+}
