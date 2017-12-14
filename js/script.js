@@ -25,4 +25,10 @@ $(document).ready(function(){
     $('#menuTrigger').click(function(){
         $('.mobileMenu').toggleClass("menuOpen");
     });
+
+    $('#closeMenu').click(function(){
+        $('.mobileMenu').removeClass("menuOpen");
+    });
+
+
 });

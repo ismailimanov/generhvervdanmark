@@ -140,10 +140,17 @@ header {
   justify-content: center;
   align-content: center;
   align-items: center;
-  box-shadow: -5px 0 5px -2px rgba(darken($pageColor, 10), .3);
-  z-index: 100;
+  z-index: -1;
   transform: translateX(60vw);
   transition: all .3s ease-in-out;
+
+  &--close {
+    color: #FFF;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 1.5em;
+  }
 
   &--item {
     width: 100%;
@@ -157,11 +164,8 @@ header {
 
 .menuOpen {
   transform: translateX(0vw);
-}
-
-.pageMove {
-  position: relative;
-  left: -60vw;
+  z-index: 100;
+  box-shadow: -5px 0 5px -2px rgba(darken($pageColor, 10), .3);
 }
 
 .sticky {
@@ -404,7 +408,7 @@ header {
 }
 
 .halfheader {
-  width: 100vw;
+  width: 100%;
   height: 50vh;
   background: url("https://static.pexels.com/photos/266044/pexels-photo-266044.jpeg") no-repeat;
   background-size: cover;
@@ -454,6 +458,62 @@ header {
 
     &:last-of-type {
       margin-bottom: 0;
+    }
+  }
+}
+
+.mapsContainer {
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+
+  &--map {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.contactContainer {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    margin-bottom: 1em;
+
+    b {
+      font-weight: 700;
+    }
+  }
+
+  p {
+    margin-bottom: 1em;
+    line-height: 1.2em;
+    text-align: justify;
+  }
+
+  span {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  form {
+    input, textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #CCC;
+      border-radius: 7px;
+      margin-bottom: 10px;
+      transition: all .3s ease-in-out;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0,0,0,.3);
+      }
     }
   }
 }

@@ -1,3 +1,6 @@
+<?php
+    include("inc/config.php");
+?>
 <!doctype html>
 <html lang="da">
 <head>
@@ -20,13 +23,13 @@
 </head>
 <body>
 <div class="mobileMenu">
+    <div class="mobileMenu--close" id="closeMenu"><i class="fa fa-times"></i></div>
     <div class="mobileMenu--item">Forside</div>
     <div class="mobileMenu--item">Om Os</div>
     <div class="mobileMenu--item">Kontakt Os</div>
     <div class="mobileMenu--item">Log Ind</div>
     <div class="mobileMenu--item">Tilmeld Dig</div>
 </div>
-<div class="pageContainer">
 <header>
     <div class="grid grid-pad">
         <div class="col-3-12 logoContainer">

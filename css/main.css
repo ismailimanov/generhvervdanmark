@@ -150,15 +150,19 @@ header {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-shadow: -5px 0 5px -2px rgba(52, 124, 55, 0.3);
-  box-shadow: -5px 0 5px -2px rgba(52, 124, 55, 0.3);
-  z-index: 100;
+  z-index: -1;
   -webkit-transform: translateX(60vw);
   -ms-transform: translateX(60vw);
   transform: translateX(60vw);
   -webkit-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out; }
+  .mobileMenu--close {
+    color: #FFF;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 1.5em; }
   .mobileMenu--item {
     width: 100%;
     padding: 20px 0;
@@ -170,11 +174,10 @@ header {
 .menuOpen {
   -webkit-transform: translateX(0vw);
   -ms-transform: translateX(0vw);
-  transform: translateX(0vw); }
-
-.pageMove {
-  position: relative;
-  left: -60vw; }
+  transform: translateX(0vw);
+  z-index: 100;
+  -webkit-box-shadow: -5px 0 5px -2px rgba(52, 124, 55, 0.3);
+  box-shadow: -5px 0 5px -2px rgba(52, 124, 55, 0.3); }
 
 .sticky {
   background: #FFF;
@@ -386,7 +389,7 @@ header {
         line-height: 1.1em; }
 
 .halfheader {
-  width: 100vw;
+  width: 100%;
   height: 50vh;
   background: url("https://static.pexels.com/photos/266044/pexels-photo-266044.jpeg") no-repeat;
   background-size: cover;
@@ -440,6 +443,47 @@ header {
     margin-bottom: .6em; }
     .aboutContainer p:last-of-type {
       margin-bottom: 0; }
+
+.mapsContainer {
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  position: relative; }
+  .mapsContainer--map {
+    width: 100%;
+    height: 100%; }
+
+.contactContainer {
+  padding-top: 20px;
+  padding-bottom: 40px; }
+  .contactContainer h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    margin-bottom: 1em; }
+    .contactContainer h1 b {
+      font-weight: 700; }
+  .contactContainer p {
+    margin-bottom: 1em;
+    line-height: 1.2em;
+    text-align: justify; }
+  .contactContainer span {
+    display: block;
+    margin-bottom: 10px; }
+  .contactContainer form input, .contactContainer form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; }
+    .contactContainer form input:focus, .contactContainer form textarea:focus {
+      outline: none;
+      -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
 
 footer {
   background: #212121;
