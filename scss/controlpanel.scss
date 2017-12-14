@@ -296,6 +296,10 @@ body.form {
       }
     }
 
+    &--menu.disabled {
+      cursor: not-allowed;
+    }
+
     &--dropdown {
       max-height: 0px;
       overflow: hidden;

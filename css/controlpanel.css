@@ -279,6 +279,8 @@ body.form {
       .panelContainer--sidebar--menu i {
         margin-right: .5em;
         width: 21px; }
+    .panelContainer--sidebar--menu.disabled {
+      cursor: not-allowed; }
     .panelContainer--sidebar--dropdown {
       max-height: 0px;
       overflow: hidden;

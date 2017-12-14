@@ -28,7 +28,7 @@ if(!isset($_SESSION["user_id"])){
         <div class="panelContainer--sidebar--menu">
             <i class="fa fa-credit-card"></i> Betaling
         </div>
-        <div class="panelContainer--sidebar--menu" id="teacherDropdownButton">
+        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
             <i class="fa fa-user-circle-o"></i> Kørelærer
         </div>
         <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
@@ -42,7 +42,7 @@ if(!isset($_SESSION["user_id"])){
                 <i class="fa fa-comments-o"></i> Chat
             </div>
         </div>
-        <div class="panelContainer--sidebar--menu">
+        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>">
             <i class="fa fa-star-o"></i> Skriv anmeldelse
         </div>
         <div class="panelContainer--sidebar--menu" id="settingsDropdownButton">

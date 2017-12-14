@@ -47,3 +47,13 @@ function login($link, $username, $password){
         message("Brugeren findes ikke");
     }
 }
+
+function paymentStatus($link, $user_id){
+    $getPaymentStatus = mysqli_query($link, "SELECT * FROM payment WHERE user_id='{$user_id}'");
+
+    if(mysqli_num_rows($getPaymentStatus) > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
