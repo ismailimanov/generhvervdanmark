@@ -43,8 +43,19 @@
                     <li><a href="forside">Forside</a></li>
                     <li><a href="om-os">Om Os</a></li>
                     <li><a href="kontakt-os">Kontakt Os</a></li>
-                    <li class="btn"><a href="log-ind">Log Ind</a></li>
-                    <li class="btn"><a href="tilmeld-dig">Tilmed dig</a></li>
+                    <?php
+                    if(!isset($_SESSION["user_id"])) {
+                        ?>
+                        ?>
+                        <li class="btn"><a href="log-ind">Log ind</a></li>
+                        <li class="btn"><a href="tilmeld-dig">Tilmed dig</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li class="btn"><a href="kontrol-panel">Kontrol Panel</a></li>
+                    <?php
+                    }
+                    ?>
                 </ul>
                 <div class="menuContainer--mobilemenu" id="menuTrigger">
                     <i class="fa fa-bars"></i>

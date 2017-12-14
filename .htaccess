@@ -4,3 +4,5 @@ RewriteRule ^om-os omos\.php
 RewriteRule ^kontakt-os kontaktos\.php
 RewriteRule ^log-ind logind\.php
 RewriteRule ^tilmeld-dig tilmelddig\.php
+RewriteRule ^kontrol-panel kontrolpanel\.php
+RewriteRule ^log-ud logud\.php
