@@ -13,9 +13,12 @@ if(!isset($_SESSION["user_id"])){
 
     <title>Generhverv Danmark - Kontrol Panel</title>
     <link href="css/controlpanel.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" type="text/css" rel="stylesheet">
+
     <script src="https://use.fontawesome.com/bca656bdb8.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="js/controlpanel.js"></script>
 </head>
 <body>

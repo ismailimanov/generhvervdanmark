@@ -376,6 +376,7 @@ body.form {
 
       .content {
         display: flex;
+        flex-direction: column;
 
         form {
           display: flex;
@@ -437,6 +438,15 @@ body.form {
             &:active {
               outline: none;
             }
+          }
+        }
+
+        #koerelaerer tbody tr td:last-of-type {
+          text-align: center;
+
+          a {
+            color: $pageColor;
+            text-decoration: none;
           }
         }
       }

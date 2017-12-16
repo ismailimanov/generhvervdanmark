@@ -79,9 +79,9 @@ function getFullName($link, $user_id){
 function updateInfo($link, $user_id, $firstname, $lastname, $phonenumber, $address, $zipcode, $city){
     mysqli_query($link, "UPDATE users SET firstname='{$firstname}', lastname='{$lastname}', phonenumber='{$phonenumber}', address='{$address}', zipcode='{$zipcode}', city='{$city}' WHERE id='{$user_id}'");
     if(mysqli_affected_rows($link) > 0){
-        messagebox("success", "Dine oplysninger er nu ændret");
+        messagebox("success", "Dine oplysninger er nu ændret.");
     } else {
-        messagebox("error", "Dine oplysninger kunne ikke ændres");
+        messagebox("error", "Dine oplysninger kunne ikke ændres.");
     }
 }
 
@@ -94,12 +94,12 @@ function updatePassword($link, $user_id, $password, $newpassword){
         mysqli_query($link, "UPDATE users SET password='{$newpassword}' WHERE id='{$user_id}'");
 
         if(mysqli_affected_rows($link) > 0){
-            messagebox("success", "Dit kodeord er nu opdateret");
+            messagebox("success", "Dit kodeord er nu opdateret.");
         } else {
-            messagebox("error", "Dit kodeord kunne ikke opdateres");
+            messagebox("error", "Dit kodeord kunne ikke opdateres.");
         }
     } else {
-        messagebox("error", "Dit nuværende kodeord var ikke korrekt");
+        messagebox("error", "Dit nuværende kodeord var ikke korrekt.");
     }
 }
 
@@ -107,13 +107,42 @@ function writeReview($link, $user_id, $review){
     $check = mysqli_query($link, "SELECT * FROM reviews WHERE user_id='{$user_id}'");
 
     if(mysqli_num_rows($check) > 0){
-        messagebox("error", "Du har allerede skrevet en anmeldelse");
+        messagebox("error", "Du har allerede skrevet en anmeldelse.");
     } else {
         mysqli_query($link, "INSERT INTO reviews (user_id, review) VALUES ('{$user_id}', '{$review}')");
         if(mysqli_affected_rows($link) > 0){
-            messagebox("success", "Tak! Din anmeldelse er nu sendt ind");
+            messagebox("success", "Tak! Din anmeldelse er nu sendt ind.");
         } else {
-            messagebox("error", "Din anmeldelse kunne ikke sendes ind");
+            messagebox("error", "Din anmeldelse kunne ikke sendes ind.");
+        }
+    }
+}
+
+function teacherList($link){
+    $getTeachers = mysqli_query($link, "SELECT * FROM teacher ORDER BY rand()");
+    while($teacher = mysqli_fetch_array($getTeachers)){
+        ?>
+            <tr>
+                <td><?=$teacher["firstname"]?></td>
+                <td><?=$teacher["lastname"]?></td>
+                <td><?=$teacher["city"]?></td>
+                <td><a href="?teacherid=<?=$teacher["id"]?>"><i class="fa fa-check-square-o"></i></a></td>
+            </tr>
+        <?php
+    }
+}
+
+function selectTeacher($link, $user_id, $teacher_id){
+    $checkTeacher = mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$user_id}'");
+
+    if(mysqli_num_rows($checkTeacher) > 0){
+        messagebox("error", "Du har allerede sendt en ansøgning til en kørelærer.");
+    } else {
+        mysqli_query($link, "INSERT INTO teacherStudent (user_id, teacher_id) VALUES ('{$user_id}', '{$teacher_id}')");
+        if(mysqli_affected_rows($link) > 0){
+            messagebox("success", "Din ansøgning er nu sendt. Du vil få et svar hurtigst muligt.");
+        } else {
+            messagebox("error", "Der var en fejl under ansøgningen. Prøv venligst igen.");
         }
     }
 }
