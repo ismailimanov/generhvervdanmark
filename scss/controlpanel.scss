@@ -380,7 +380,7 @@ body.form {
           flex-wrap: wrap;
           justify-content: space-between;
 
-          input[type="text"] {
+          input[type="text"], input[type="password"] {
             width: 49%;
             padding: 10px;
             margin-bottom: 1em;

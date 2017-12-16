@@ -50,7 +50,7 @@ function login($link, $username, $password){
         $data = mysqli_fetch_assoc($getData);
         if(password_verify($password, $data["password"])){
             $_SESSION["user_id"] = $data["id"];
-            header("Location: kontrol-panel");
+            header("Location: kontrolpanel");
             exit();
         } else {
             message("Forkert kodeord");
@@ -82,5 +82,22 @@ function updateInfo($link, $user_id, $firstname, $lastname, $phonenumber, $addre
         messagebox("success", "Dine oplysninger er nu ændret");
     } else {
         messagebox("error", "Dine oplysninger kunne ikke ændres");
+    }
+}
+
+function updatePassword($link, $user_id, $password, $newpassword){
+    $getPassword = mysqli_query($link, "SELECT password FROM users WHERE id='{$user_id}'");
+    $currentPassword = mysqli_fetch_assoc($getPassword);
+
+    if(password_verify($password, $currentPassword["password"])){
+        $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
+        mysqli_query($link, "UPDATE users SET password='{$newpassword}' WHERE id='{$user_id}'");
+        if(mysqli_affected_rows($link) > 0){
+            messagebox("success", "Dit kodeord er nu opdateret");
+        } else {
+            messagebox("error", "Dit kodeord kunne ikke opdateres");
+        }
+    } else {
+        messagebox("error", "Dit nuværende kodeord var ikke korrekt");
     }
 }
