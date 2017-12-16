@@ -92,7 +92,7 @@ function updatePassword($link, $user_id, $password, $newpassword){
     if(password_verify($password, $currentPassword["password"])){
         $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
         mysqli_query($link, "UPDATE users SET password='{$newpassword}' WHERE id='{$user_id}'");
-        
+
         if(mysqli_affected_rows($link) > 0){
             messagebox("success", "Dit kodeord er nu opdateret");
         } else {
@@ -100,5 +100,20 @@ function updatePassword($link, $user_id, $password, $newpassword){
         }
     } else {
         messagebox("error", "Dit nuværende kodeord var ikke korrekt");
+    }
+}
+
+function writeReview($link, $user_id, $review){
+    $check = mysqli_query($link, "SELECT * FROM reviews WHERE user_id='{$user_id}'");
+
+    if(mysqli_num_rows($check) > 0){
+        messagebox("error", "Du har allerede skrevet en anmeldelse");
+    } else {
+        mysqli_query($link, "INSERT INTO reviews (user_id, review) VALUES ('{$user_id}', '{$review}')");
+        if(mysqli_affected_rows($link) > 0){
+            messagebox("success", "Tak! Din anmeldelse er nu sendt ind");
+        } else {
+            messagebox("error", "Din anmeldelse kunne ikke sendes ind");
+        }
     }
 }

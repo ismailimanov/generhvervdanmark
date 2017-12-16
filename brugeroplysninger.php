@@ -19,12 +19,12 @@ $info = mysqli_fetch_assoc($getInfo);
 <span class="breadcrumbs">Indstillinger &raquo; Brugeroplysninger</span>
 <div class="content">
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
-        <input type="text" name="firstname" placeholder="Fornavn" value="<?=$info["firstname"]?>">
-        <input type="text" name="lastname" placeholder="Efternavn" value="<?=$info["lastname"]?>">
-        <input type="text" name="phonenumber" placeholder="Telefonnummer" value="<?=$info["phonenumber"]?>">
-        <input type="text" name="address" placeholder="Adresse" value="<?=$info["address"]?>">
-        <input type="text" name="zipcode" placeholder="Postnummer" value="<?=$info["zipcode"]?>">
-        <input type="text" name="city" placeholder="By" value="<?=$info["city"]?>">
+        <input type="text" name="firstname" placeholder="Fornavn" value="<?=$info["firstname"]?>" required>
+        <input type="text" name="lastname" placeholder="Efternavn" value="<?=$info["lastname"]?>" required>
+        <input type="text" name="phonenumber" placeholder="Telefonnummer" value="<?=$info["phonenumber"]?>" required>
+        <input type="text" name="address" placeholder="Adresse" value="<?=$info["address"]?>" required>
+        <input type="text" name="zipcode" placeholder="Postnummer" value="<?=$info["zipcode"]?>" required>
+        <input type="text" name="city" placeholder="By" value="<?=$info["city"]?>" required>
         <input type="submit" name="update" value="Opdater">
     </form>
 </div>
