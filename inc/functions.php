@@ -92,6 +92,7 @@ function updatePassword($link, $user_id, $password, $newpassword){
     if(password_verify($password, $currentPassword["password"])){
         $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
         mysqli_query($link, "UPDATE users SET password='{$newpassword}' WHERE id='{$user_id}'");
+        
         if(mysqli_affected_rows($link) > 0){
             messagebox("success", "Dit kodeord er nu opdateret");
         } else {

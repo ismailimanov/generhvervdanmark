@@ -9,7 +9,7 @@ if(isset($_POST["update"])){
 }
 ?>
 <h1>Skift kodeord</h1>
-<span class="breadcrumbs">Indstillinger > Skift kodeord</span>
+<span class="breadcrumbs">Indstillinger &raquo; Skift kodeord</span>
 <div class="content">
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
         <input type="password" name="password" placeholder="Nuværende kodeord">

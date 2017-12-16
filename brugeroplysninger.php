@@ -16,7 +16,7 @@ $getInfo = mysqli_query($link, "SELECT * FROM users WHERE id='{$_SESSION["user_i
 $info = mysqli_fetch_assoc($getInfo);
 ?>
 <h1>Brugeroplysninger</h1>
-<span class="breadcrumbs">Indstillinger > Brugeroplysninger</span>
+<span class="breadcrumbs">Indstillinger &raquo; Brugeroplysninger</span>
 <div class="content">
     <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
         <input type="text" name="firstname" placeholder="Fornavn" value="<?=$info["firstname"]?>">
