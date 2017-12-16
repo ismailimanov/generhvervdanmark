@@ -57,3 +57,9 @@ function paymentStatus($link, $user_id){
         return false;
     }
 }
+
+function getFullName($link, $user_id){
+    $getInfo = mysqli_query($link, "SELECT firstname, lastname FROM users WHERE id='{$user_id}'");
+    $info = mysqli_fetch_assoc($getInfo);
+    return $info['firstname'] . " " . $info['lastname'];
+}

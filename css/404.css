@@ -1,0 +1,282 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300);
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #43A047;
+  height: 100%; }
+
+.fejlContainer {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .fejlContainer--title {
+    font-size: 9em;
+    font-weight: 700;
+    color: #FFF;
+    position: relative; }
+    .fejlContainer--title::before {
+      content: attr(data-content);
+      position: absolute;
+      left: -2px;
+      text-shadow: 1px 0 #3F51B5;
+      top: 0;
+      color: #FFF;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      -webkit-animation: animationBefore 3s infinite linear alternate-reverse;
+      animation: animationBefore 3s infinite linear alternate-reverse; }
+    .fejlContainer--title::after {
+      content: attr(data-content);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 #F44336;
+      top: 0;
+      color: #FFF;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      -webkit-animation: animationAfter 2s infinite linear alternate-reverse;
+      animation: animationAfter 2s infinite linear alternate-reverse; }
+  .fejlContainer--tekst {
+    font-size: 40px;
+    font-weight: 700;
+    color: #FFF;
+    position: relative; }
+    .fejlContainer--tekst::before {
+      content: attr(data-content);
+      position: absolute;
+      left: -2px;
+      text-shadow: 1px 0 #3F51B5;
+      top: 0;
+      color: #FFF;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      -webkit-animation: animationBefore 3s infinite linear alternate-reverse;
+      animation: animationBefore 3s infinite linear alternate-reverse; }
+    .fejlContainer--tekst::after {
+      content: attr(data-content);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 #F44336;
+      top: 0;
+      color: #FFF;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      -webkit-animation: animationAfter 2s infinite linear alternate-reverse;
+      animation: animationAfter 2s infinite linear alternate-reverse; }
+  .fejlContainer--knapper {
+    margin: 30px; }
+    .fejlContainer--knapper--knap {
+      background-color: #43A047;
+      font-weight: 700;
+      border: 2px solid #FFF;
+      text-decoration: none;
+      padding: 15px;
+      text-transform: uppercase;
+      color: #FFF;
+      border-radius: 26px;
+      -webkit-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out; }
+      .fejlContainer--knapper--knap:hover {
+        background-color: #5bbb60;
+        color: #FFF;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out; }
+
+@-webkit-keyframes animationBefore {
+  0% {
+    clip: rect(89px, 9999px, 15px, 0); }
+  5% {
+    clip: rect(47px, 9999px, 78px, 0); }
+  10% {
+    clip: rect(108px, 9999px, 109px, 0); }
+  15% {
+    clip: rect(9px, 9999px, 12px, 0); }
+  20% {
+    clip: rect(134px, 9999px, 55px, 0); }
+  25% {
+    clip: rect(74px, 9999px, 29px, 0); }
+  30% {
+    clip: rect(36px, 9999px, 122px, 0); }
+  35% {
+    clip: rect(100px, 9999px, 107px, 0); }
+  40% {
+    clip: rect(145px, 9999px, 92px, 0); }
+  45% {
+    clip: rect(167px, 9999px, 145px, 0); }
+  50% {
+    clip: rect(185px, 9999px, 115px, 0); }
+  55% {
+    clip: rect(51px, 9999px, 30px, 0); }
+  60% {
+    clip: rect(168px, 9999px, 130px, 0); }
+  65% {
+    clip: rect(30px, 9999px, 118px, 0); }
+  70% {
+    clip: rect(159px, 9999px, 30px, 0); }
+  75% {
+    clip: rect(170px, 9999px, 100px, 0); }
+  80% {
+    clip: rect(159px, 9999px, 184px, 0); }
+  85% {
+    clip: rect(39px, 9999px, 108px, 0); }
+  90% {
+    clip: rect(182px, 9999px, 65px, 0); }
+  95% {
+    clip: rect(79px, 9999px, 71px, 0); }
+  100% {
+    clip: rect(86px, 9999px, 56px, 0); } }
+
+@keyframes animationBefore {
+  0% {
+    clip: rect(89px, 9999px, 15px, 0); }
+  5% {
+    clip: rect(47px, 9999px, 78px, 0); }
+  10% {
+    clip: rect(108px, 9999px, 109px, 0); }
+  15% {
+    clip: rect(9px, 9999px, 12px, 0); }
+  20% {
+    clip: rect(134px, 9999px, 55px, 0); }
+  25% {
+    clip: rect(74px, 9999px, 29px, 0); }
+  30% {
+    clip: rect(36px, 9999px, 122px, 0); }
+  35% {
+    clip: rect(100px, 9999px, 107px, 0); }
+  40% {
+    clip: rect(145px, 9999px, 92px, 0); }
+  45% {
+    clip: rect(167px, 9999px, 145px, 0); }
+  50% {
+    clip: rect(185px, 9999px, 115px, 0); }
+  55% {
+    clip: rect(51px, 9999px, 30px, 0); }
+  60% {
+    clip: rect(168px, 9999px, 130px, 0); }
+  65% {
+    clip: rect(30px, 9999px, 118px, 0); }
+  70% {
+    clip: rect(159px, 9999px, 30px, 0); }
+  75% {
+    clip: rect(170px, 9999px, 100px, 0); }
+  80% {
+    clip: rect(159px, 9999px, 184px, 0); }
+  85% {
+    clip: rect(39px, 9999px, 108px, 0); }
+  90% {
+    clip: rect(182px, 9999px, 65px, 0); }
+  95% {
+    clip: rect(79px, 9999px, 71px, 0); }
+  100% {
+    clip: rect(86px, 9999px, 56px, 0); } }
+
+@-webkit-keyframes animationAfter {
+  0% {
+    clip: rect(81px, 9999px, 14px, 0); }
+  5% {
+    clip: rect(88px, 9999px, 124px, 0); }
+  10% {
+    clip: rect(175px, 9999px, 75px, 0); }
+  15% {
+    clip: rect(80px, 9999px, 94px, 0); }
+  20% {
+    clip: rect(51px, 9999px, 63px, 0); }
+  25% {
+    clip: rect(140px, 9999px, 92px, 0); }
+  30% {
+    clip: rect(170px, 9999px, 122px, 0); }
+  35% {
+    clip: rect(123px, 9999px, 198px, 0); }
+  40% {
+    clip: rect(147px, 9999px, 111px, 0); }
+  45% {
+    clip: rect(65px, 9999px, 198px, 0); }
+  50% {
+    clip: rect(63px, 9999px, 92px, 0); }
+  55% {
+    clip: rect(108px, 9999px, 29px, 0); }
+  60% {
+    clip: rect(185px, 9999px, 147px, 0); }
+  65% {
+    clip: rect(23px, 9999px, 101px, 0); }
+  70% {
+    clip: rect(22px, 9999px, 32px, 0); }
+  75% {
+    clip: rect(148px, 9999px, 144px, 0); }
+  80% {
+    clip: rect(155px, 9999px, 134px, 0); }
+  85% {
+    clip: rect(69px, 9999px, 64px, 0); }
+  90% {
+    clip: rect(82px, 9999px, 68px, 0); }
+  95% {
+    clip: rect(167px, 9999px, 57px, 0); }
+  100% {
+    clip: rect(169px, 9999px, 66px, 0); } }
+
+@keyframes animationAfter {
+  0% {
+    clip: rect(81px, 9999px, 14px, 0); }
+  5% {
+    clip: rect(88px, 9999px, 124px, 0); }
+  10% {
+    clip: rect(175px, 9999px, 75px, 0); }
+  15% {
+    clip: rect(80px, 9999px, 94px, 0); }
+  20% {
+    clip: rect(51px, 9999px, 63px, 0); }
+  25% {
+    clip: rect(140px, 9999px, 92px, 0); }
+  30% {
+    clip: rect(170px, 9999px, 122px, 0); }
+  35% {
+    clip: rect(123px, 9999px, 198px, 0); }
+  40% {
+    clip: rect(147px, 9999px, 111px, 0); }
+  45% {
+    clip: rect(65px, 9999px, 198px, 0); }
+  50% {
+    clip: rect(63px, 9999px, 92px, 0); }
+  55% {
+    clip: rect(108px, 9999px, 29px, 0); }
+  60% {
+    clip: rect(185px, 9999px, 147px, 0); }
+  65% {
+    clip: rect(23px, 9999px, 101px, 0); }
+  70% {
+    clip: rect(22px, 9999px, 32px, 0); }
+  75% {
+    clip: rect(148px, 9999px, 144px, 0); }
+  80% {
+    clip: rect(155px, 9999px, 134px, 0); }
+  85% {
+    clip: rect(69px, 9999px, 64px, 0); }
+  90% {
+    clip: rect(82px, 9999px, 68px, 0); }
+  95% {
+    clip: rect(167px, 9999px, 57px, 0); }
+  100% {
+    clip: rect(169px, 9999px, 66px, 0); } }

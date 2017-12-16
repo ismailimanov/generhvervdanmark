@@ -46,7 +46,6 @@
                     <?php
                     if(!isset($_SESSION["user_id"])) {
                         ?>
-                        ?>
                         <li class="btn"><a href="log-ind">Log ind</a></li>
                         <li class="btn"><a href="tilmeld-dig">Tilmed dig</a></li>
                         <?php

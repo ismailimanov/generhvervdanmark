@@ -1,8 +1,27 @@
+# Tillader URL omskrivning
 RewriteEngine on
+
+# Frontend omskrivning
 RewriteRule ^forside$ index\.php
 RewriteRule ^om-os omos\.php
 RewriteRule ^kontakt-os kontaktos\.php
+
+# Log ind og tilmeld omskrivning
 RewriteRule ^log-ind logind\.php
 RewriteRule ^tilmeld-dig tilmelddig\.php
-RewriteRule ^kontrol-panel kontrolpanel\.php
+
+# Kunde kontrolpanel omskrivning
+RewriteRule ^kontrolpanel kontrolpanel\.php
+RewriteRule ^betaling betaling\.php
+RewriteRule ^vælg-kørelærer vaelgkoerelaerer\.php
+RewriteRule ^anmeld-kørelærer anmeldkoerelaerer\.php
+RewriteRule ^chat chat\.php
+RewriteRule ^skriv-anmeldelse skrivanmeldelse\.php
+RewriteRule ^brugeroplysninger brugeroplysninger\.php
+RewriteRule ^skift-kodeord skiftkodeord\.php
+
 RewriteRule ^log-ud logud\.php
+
+# Diverse
+RewriteRule ^ukendt-side 404\.php
+ErrorDocument 404 /generhvervdanmark/ukendt-side

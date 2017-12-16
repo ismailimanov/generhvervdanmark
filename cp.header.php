@@ -22,37 +22,37 @@ if(!isset($_SESSION["user_id"])){
 <div class="panelContainer">
     <div class="panelContainer--sidebar">
         <div class="panelContainer--sidebar--logo"></div>
-        <div class="panelContainer--sidebar--menu">
+        <div class="panelContainer--sidebar--menu" onclick="location.href='kontrolpanel';">
             <i class="fa fa-home"></i> Forside
         </div>
-        <div class="panelContainer--sidebar--menu">
+        <div class="panelContainer--sidebar--menu" onclick="location.href='betaling';">
             <i class="fa fa-credit-card"></i> Betaling
         </div>
         <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
             <i class="fa fa-user-circle-o"></i> Kørelærer
         </div>
         <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
-            <div class="panelContainer--sidebar--dropdown--menu">
+            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
                 <i class="fa fa-user-plus"></i> Vælg kørelærer
             </div>
-            <div class="panelContainer--sidebar--dropdown--menu">
+            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='anmeld-kørelærer';">
                 <i class="fa fa-user"></i> Anmeld kørelærer
             </div>
-            <div class="panelContainer--sidebar--dropdown--menu">
+            <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
                 <i class="fa fa-comments-o"></i> Chat
             </div>
         </div>
-        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>">
+        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" onclick="location.href='skriv-anmeldelse';">
             <i class="fa fa-star-o"></i> Skriv anmeldelse
         </div>
         <div class="panelContainer--sidebar--menu" id="settingsDropdownButton">
             <i class="fa fa-cog"></i> Indstillinger
         </div>
         <div class="panelContainer--sidebar--dropdown" id="settingsDropdown">
-            <div class="panelContainer--sidebar--dropdown--menu">
+            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='brugeroplysninger';">
                 <i class="fa fa-user"></i> Brugeroplysninger
             </div>
-            <div class="panelContainer--sidebar--dropdown--menu">
+            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='skift-kodeord';">
                 <i class="fa fa-key"></i> Skift kodeord
             </div>
         </div>
