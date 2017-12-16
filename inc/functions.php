@@ -3,6 +3,18 @@ function message($message){
     echo '<script>javascript:alert("' . $message . '");</script>';
 }
 
+function messagebox($style, $message){
+    if($style == "error"){
+        ?>
+        <div class="message error"><?=$message?></div>
+        <?php
+    } else {
+        ?>
+        <div class="message success"><?=$message?></div>
+        <?php
+    }
+}
+
 function createUser($link, $firstname, $lastname, $phonenumber, $address, $zipcode, $city, $email, $username, $password){
     $username   = strtolower($username);
     $email      = strtolower($email);
@@ -62,4 +74,13 @@ function getFullName($link, $user_id){
     $getInfo = mysqli_query($link, "SELECT firstname, lastname FROM users WHERE id='{$user_id}'");
     $info = mysqli_fetch_assoc($getInfo);
     return $info['firstname'] . " " . $info['lastname'];
+}
+
+function updateInfo($link, $user_id, $firstname, $lastname, $phonenumber, $address, $zipcode, $city){
+    mysqli_query($link, "UPDATE users SET firstname='{$firstname}', lastname='{$lastname}', phonenumber='{$phonenumber}', address='{$address}', zipcode='{$zipcode}', city='{$city}' WHERE id='{$user_id}'");
+    if(mysqli_affected_rows($link) > 0){
+        messagebox("success", "Dine oplysninger er nu ændret");
+    } else {
+        messagebox("error", "Dine oplysninger kunne ikke ændres");
+    }
 }

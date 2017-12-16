@@ -4,7 +4,7 @@ include("inc/config.php");
 if(isset($_SESSION["user_id"])){
     header("Location: kontrolpanel");
     exit();
-}wa
+}
 
 if(isset($_GET["create"])){
     $firstname      = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING) or die("Invalid first name");
