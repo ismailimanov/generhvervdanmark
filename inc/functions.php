@@ -171,3 +171,31 @@ function rateTeacher($link, $user_id, $teacher_id, $rating){
         }
     }
 }
+
+function writeChat($link, $sender, $receiver, $message, $usertype, $chatid){
+    if(!is_numeric($receiver) OR !is_numeric($sender)){
+        messagebox("error", "Invalid sender eller modtager id");
+    } else {
+        if($usertype == 1){
+            $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE user_id='{$sender}' AND teacher_id='{$receiver}'");
+            if(mysqli_num_rows($checkChat) > 0){
+                mysqli_query($link, "INSERT INTO chatMessage (sender, receiver, message, chat_id) VALUES ('{$sender}', '{$receiver}', '{$message}', '{$chatid}')");
+                if(mysqli_affected_rows($link) != 1){
+                    messagebox("error", "Beskeden kunne ikke sendes. Prøv igen.");
+                }
+            } else {
+                messagebox("error", "Du kan ikke sende en besked til denne bruger");
+            }
+        } else {
+            $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE user_id='{$receiver}' AND teacher_id='{$sender}'");
+            if(mysqli_num_rows($checkChat) > 0){
+                mysqli_query($link, "INSERT INTO chatMessage (sender, receiver, message, chat_id) VALUES ('{$sender}', '{$receiver}', '{$message}', '{$chatid}')");
+                if(mysqli_affected_rows($link) != 1){
+                    messagebox("error", "Beskeden kunne ikke sendes. Prøv igen.");
+                }
+            } else {
+                messagebox("error", "Du kan ikke sende en besked til denne bruger");
+            }
+        }
+    }
+}

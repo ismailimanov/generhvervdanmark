@@ -12,5 +12,23 @@ $(document).ready(function(){
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Danish.json"
         },
         "order": []
-    } );
+    });
+
+    function updateChat(){
+        chatid = $("#chatid").val();
+        receiver = $("#receiver").val();
+
+        $.ajax({
+            type: "POST",
+            url: "ajax.chat.php",
+            data: {"chatid":chatid, "receiver":receiver},
+            success: function (output) {
+                $('.chatBoxes').html(output);
+            }
+        });
+    }
+    updateChat();
+    setInterval(function(){
+        updateChat();
+    }, 3000);
 });
