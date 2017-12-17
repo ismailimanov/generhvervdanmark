@@ -85,7 +85,7 @@ body.form {
           position: absolute;
           top: 0;
           left: 0;
-          background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));
+          background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));
           background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
           background: -o-linear-gradient(top, #222 0%, #45484d 100%);
           background: linear-gradient(top, #222 0%, #45484d 100%);
@@ -447,6 +447,51 @@ body.form {
           .panelContainer--content--container .content form.reviewForm .rating > label:hover ~ input:checked ~ label,
           .panelContainer--content--container .content form.reviewForm .rating > input:checked ~ label:hover ~ label {
             color: #FFED85; }
+        .panelContainer--content--container .content form.chatForm textarea {
+          min-height: 70px; }
+        .panelContainer--content--container .content .divider {
+          width: 100%;
+          border-bottom: 1px dotted #CCC; }
+        .panelContainer--content--container .content .chatBoxes {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column; }
+          .panelContainer--content--container .content .chatBoxes .chatBox {
+            background: #f7f7f7;
+            padding: 1em;
+            border-radius: 7px;
+            margin: .5em 0;
+            -webkit-box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 5px 12px -3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            -webkit-flex-basis: auto;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto; }
+            .panelContainer--content--container .content .chatBoxes .chatBox span {
+              display: block; }
+            .panelContainer--content--container .content .chatBoxes .chatBox--info {
+              font-size: .7em; }
+          .panelContainer--content--container .content .chatBoxes .cLeft {
+            text-align: left;
+            -webkit-align-self: flex-start;
+            -ms-flex-item-align: start;
+            align-self: flex-start;
+            background: #F5F5F5;
+            text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+          .panelContainer--content--container .content .chatBoxes .cRight {
+            text-align: right;
+            background: #C8E6C9;
+            color: #000;
+            text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+            -webkit-align-self: flex-end;
+            -ms-flex-item-align: end;
+            align-self: flex-end; }
         .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type {
           text-align: center; }
           .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a {

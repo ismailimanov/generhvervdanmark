@@ -9,7 +9,7 @@ if(isset($_POST["review"])){
     rateTeacher($link, $_SESSION["user_id"], $teacher["teacher_id"], $rating);
 }
 
-$checkTeacher = mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$_SESSION["user_id"]}'");
+$checkTeacher = mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$_SESSION["user_id"]}' AND accepted='1'");
 $checkReview = mysqli_query($link, "SELECT * FROM teacherRating WHERE user_id='{$_SESSION["user_id"]}'");
 ?>
 <h1>Vurder kørelærer</h1>

@@ -119,7 +119,7 @@ function writeReview($link, $user_id, $review){
 }
 
 function teacherList($link){
-    $getTeachers = mysqli_query($link, "SELECT * FROM teacher ORDER BY rand()");
+    $getTeachers = mysqli_query($link, "SELECT * FROM users WHERE usertype='2' ORDER BY rand()");
     while($teacher = mysqli_fetch_array($getTeachers)){
         ?>
             <tr>
