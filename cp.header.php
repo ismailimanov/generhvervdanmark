@@ -38,8 +38,8 @@ if(!isset($_SESSION["user_id"])){
             <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
                 <i class="fa fa-user-plus"></i> Vælg kørelærer
             </div>
-            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='anmeld-kørelærer';">
-                <i class="fa fa-user"></i> Anmeld kørelærer
+            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
+                <i class="fa fa-user"></i> Vurder kørelærer
             </div>
             <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
                 <i class="fa fa-comments-o"></i> Chat

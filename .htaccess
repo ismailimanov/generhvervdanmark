@@ -14,7 +14,7 @@ RewriteRule ^tilmeld-dig tilmelddig\.php
 RewriteRule ^kontrolpanel kontrolpanel\.php
 RewriteRule ^betaling betaling\.php
 RewriteRule ^vælg-kørelærer vaelgkoerelaerer\.php
-RewriteRule ^anmeld-kørelærer anmeldkoerelaerer\.php
+RewriteRule ^vurder-kørelærer vurderkoerelaerer\.php
 RewriteRule ^chat chat\.php
 RewriteRule ^skriv-anmeldelse skrivanmeldelse\.php
 RewriteRule ^brugeroplysninger brugeroplysninger\.php

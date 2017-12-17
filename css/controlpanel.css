@@ -85,7 +85,7 @@ body.form {
           position: absolute;
           top: 0;
           left: 0;
-          background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));
+          background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));
           background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
           background: -o-linear-gradient(top, #222 0%, #45484d 100%);
           background: linear-gradient(top, #222 0%, #45484d 100%);
@@ -409,6 +409,44 @@ body.form {
               outline: none; }
             .panelContainer--content--container .content form input[type="submit"]:active {
               outline: none; }
+        .panelContainer--content--container .content form.reviewForm {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center; }
+          .panelContainer--content--container .content form.reviewForm .rating {
+            border: none;
+            float: left;
+            margin-bottom: 1em; }
+          .panelContainer--content--container .content form.reviewForm .rating > input {
+            display: none; }
+          .panelContainer--content--container .content form.reviewForm .rating > label:before {
+            margin: 5px;
+            font-size: 3em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005"; }
+          .panelContainer--content--container .content form.reviewForm .rating > label {
+            color: #ddd;
+            float: right; }
+          .panelContainer--content--container .content form.reviewForm .rating > input:checked ~ label,
+          .panelContainer--content--container .content form.reviewForm .rating:not(:checked) > label:hover,
+          .panelContainer--content--container .content form.reviewForm .rating:not(:checked) > label:hover ~ label {
+            color: #FFD700; }
+          .panelContainer--content--container .content form.reviewForm .rating > input:checked + label:hover,
+          .panelContainer--content--container .content form.reviewForm .rating > input:checked ~ label:hover,
+          .panelContainer--content--container .content form.reviewForm .rating > label:hover ~ input:checked ~ label,
+          .panelContainer--content--container .content form.reviewForm .rating > input:checked ~ label:hover ~ label {
+            color: #FFED85; }
         .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type {
           text-align: center; }
           .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a {

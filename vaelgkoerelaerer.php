@@ -2,7 +2,7 @@
 include("cp.header.php");
 
 if(isset($_GET["teacherid"])){
-    $teacher      = filter_input(INPUT_GET, 'teacherid', FILTER_SANITIZE_STRING) or messagebox("error", "Ugyldig fornavn");
+    $teacher      = filter_input(INPUT_GET, 'teacherid', FILTER_SANITIZE_STRING) or messagebox("error", "Ugyldig lærer id");
 
     selectTeacher($link, $_SESSION["user_id"], $teacher);
 }
@@ -17,6 +17,7 @@ if(isset($_GET["teacherid"])){
                 <th>Fornavn</th>
                 <th>Efternavn</th>
                 <th>By</th>
+                <th>Vurdering</th>
                 <th>Vælg</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@ if(isset($_GET["teacherid"])){
                 <th>Fornavn</th>
                 <th>Efternavn</th>
                 <th>By</th>
+                <th>Vurdering</th>
                 <th>Vælg</th>
             </tr>
         </tfoot>

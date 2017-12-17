@@ -126,6 +126,16 @@ function teacherList($link){
                 <td><?=$teacher["firstname"]?></td>
                 <td><?=$teacher["lastname"]?></td>
                 <td><?=$teacher["city"]?></td>
+                <td>
+                    <?php
+                        $getRating = mysqli_fetch_assoc(mysqli_query($link, "SELECT AVG(rating) AS rating FROM teacherRating WHERE teacher_id='{$teacher["id"]}'"));
+                        if(is_null($getRating["rating"])){
+                            echo "Ingen vurdering";
+                        } else {
+                            echo $getRating["rating"];
+                        }
+                    ?>
+                </td>
                 <td><a href="?teacherid=<?=$teacher["id"]?>"><i class="fa fa-check-square-o"></i></a></td>
             </tr>
         <?php
@@ -143,6 +153,21 @@ function selectTeacher($link, $user_id, $teacher_id){
             messagebox("success", "Din ansøgning er nu sendt. Du vil få et svar hurtigst muligt.");
         } else {
             messagebox("error", "Der var en fejl under ansøgningen. Prøv venligst igen.");
+        }
+    }
+}
+
+function rateTeacher($link, $user_id, $teacher_id, $rating){
+    $checkVote = mysqli_query($link, "SELECT * FROM teacherRating WHERE user_id='{$user_id}' AND teacher_id='{$teacher_id}'");
+
+    if(mysqli_num_rows($checkVote) > 0){
+        messagebox("error", "Du har allerede stemt!");
+    } else {
+        mysqli_query($link, "INSERT INTO teacherRating (teacher_id, rating, user_id) VALUES ('{$teacher_id}', '{$rating}', '{$user_id}')");
+        if(mysqli_affected_rows($link) > 0){
+            messagebox("success", "Tak for din vurdering!");
+        } else {
+            messagebox("error", "Din vurdering kunne ikke gemmes. Prøv venligst igen.");
         }
     }
 }
