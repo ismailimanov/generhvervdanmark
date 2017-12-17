@@ -58,7 +58,7 @@ if(!isset($_SESSION["user_id"])){
                     <i class="fa fa-user-circle-o"></i> Elever
                 </div>
                 <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
-                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='ansøgninger';">
                         <i class="fa fa-user-plus"></i> Ansøgninger
                     </div>
                     <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">

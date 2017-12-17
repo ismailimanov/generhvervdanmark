@@ -220,3 +220,52 @@ function chatList($link, $teacher_id){
         <?php
     }
 }
+
+function getApplications($link, $teacher_id){
+    $getApplications = mysqli_query($link, "SELECT teacherStudent.id AS tsid, teacherStudent.user_id AS uid, users.firstname AS ufn, users.lastname AS uln, users.city AS uc, users.phonenumber AS upn FROM teacherStudent JOIN users ON teacherStudent.user_id = users.id WHERE teacher_id='{$teacher_id}' AND accepted='0'");
+    if(mysqli_num_rows($getApplications) > 0){
+        while($application = mysqli_fetch_array($getApplications)){
+            ?>
+                <tr>
+                    <td><?=$application["ufn"]?></td>
+                    <td><?=$application["uln"]?></td>
+                    <td><?=$application["uc"]?></td>
+                    <td><?=$application["upn"]?></td>
+                    <td><a href="accepter?id=<?=$application["tsid"]?>"><i class="fa fa-check accept" title="Accepter"></i></a> <a href="afvis?id=<?=$application["tsid"]?>"><i class="fa fa-times reject" title="Afvis"></i></a></td>
+                </tr>
+            <?php
+        }
+    } else {
+        messagebox("error", "Ingen nye ansøgninger");
+    }
+}
+
+function acceptStudent($link, $teacher_id, $id, $message){
+    $checkStudent = mysqli_query($link, "SELECT * FROM teacherStudent WHERE teacher_id='{$teacher_id}' AND id='{$id}'");
+
+    if(mysqli_num_rows($checkStudent) > 0){
+        mysqli_query($link, "UPDATE teacherStudent SET accepted='1' WHERE teacher_id='{$teacher_id}' AND id='{$id}'");
+
+        if(mysqli_affected_rows($link) > 0){
+            $studentInfo = mysqli_fetch_assoc($checkStudent);
+            mysqli_query($link, "INSERT INTO chat (user_id, teacher_id) VALUES ('{$studentInfo["user_id"]}', '{$teacher_id}')");
+
+            if(mysqli_affected_rows($link) > 0){
+                $getChatID = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM chat WHERE teacher_id='{$teacher_id}' AND user_id='{$studentInfo["user_id"]}'"));
+                mysqli_query($link, "INSERT INTO chatMessage (sender, receiver, message, chat_id) VALUES ('$teacher_id', '{$studentInfo["user_id"]}', '{$message}', '{$getChatID["id"]}')");
+
+                if(mysqli_affected_rows($link) > 0){
+                    messagebox("success", "Du har nu accepteret eleven.");
+                } else {
+                    messagebox("error", "Fejl under sendelse af besked.");
+                }
+            } else {
+                messagebox("error", "Fejl under oprettelse af chat.");
+            }
+        } else {
+            messagebox("error", "Fejl under accept af elev.");
+        }
+    } else {
+        messagebox("error", "Dette er ikke en af dine elever.");
+    }
+}

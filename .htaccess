@@ -20,6 +20,11 @@ RewriteRule ^skriv-anmeldelse skrivanmeldelse\.php
 RewriteRule ^brugeroplysninger brugeroplysninger\.php
 RewriteRule ^skift-kodeord skiftkodeord\.php
 
+# Kørelærer kontrolpanel omskrivning
+RewriteRule ^ansøgninger ansoegninger\.php
+RewriteRule ^accepter accepter\.php
+RewriteRule ^afvis afvis\.php
+
 RewriteRule ^log-ud logud\.php
 
 # Diverse

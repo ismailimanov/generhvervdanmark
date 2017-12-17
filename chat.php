@@ -75,14 +75,15 @@ if(!isset($_GET["cid"]) && checkUserType($link, $_SESSION["user_id"]) == 2){
         </table>
     </div>
     <?php
-} else {
-    $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE id='{$_GET["cid"]}' AND teacher_id='{$_SESSION["user_id"]}'");
+} elseif(isset($_GET["cid"]) && checkUserType($link, $_SESSION["user_id"]) == 2) {
+    $cid = isset($_GET['cid']) ? $_GET['cid'] : '';
+    $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE id='{$cid}' AND teacher_id='{$_SESSION["user_id"]}'");
     if(mysqli_num_rows($checkChat) < 1){
         messagebox("error", "Dette er ikke din chat.");
     } else {
         ?>
         <h1>Chat</h1>
-        <span class="breadcrumbs">Kørelærer &raquo; Chat</span>
+        <span class="breadcrumbs">Elever &raquo; Chat</span>
         <div class="content">
             <form action="" method="post" class="chatForm">
                 <textarea name="message" placeholder="Besked" required></textarea>

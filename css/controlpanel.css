@@ -93,7 +93,7 @@ body.form {
           position: absolute;
           top: 0;
           left: 0;
-          background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));
+          background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));
           background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
           background: -o-linear-gradient(top, #222 0%, #45484d 100%);
           background: linear-gradient(top, #222 0%, #45484d 100%);
@@ -505,6 +505,8 @@ body.form {
           .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a {
             color: #43A047;
             text-decoration: none; }
+          .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a .reject {
+            color: #E53935; }
     .panelContainer--content .copyright {
       display: block;
       text-align: center; }
