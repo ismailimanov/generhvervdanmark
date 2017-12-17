@@ -28,26 +28,49 @@ if(!isset($_SESSION["user_id"])){
         <div class="panelContainer--sidebar--menu" onclick="location.href='kontrolpanel';">
             <i class="fa fa-home"></i> Forside
         </div>
-        <div class="panelContainer--sidebar--menu" onclick="location.href='betaling';">
-            <i class="fa fa-credit-card"></i> Betaling
-        </div>
-        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
-            <i class="fa fa-user-circle-o"></i> Kørelærer
-        </div>
-        <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
-            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
-                <i class="fa fa-user-plus"></i> Vælg kørelærer
-            </div>
-            <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
-                <i class="fa fa-user"></i> Vurder kørelærer
-            </div>
-            <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
-                <i class="fa fa-comments-o"></i> Chat
-            </div>
-        </div>
-        <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" onclick="location.href='skriv-anmeldelse';">
-            <i class="fa fa-star-o"></i> Skriv anmeldelse
-        </div>
+        <?php
+            if(checkUserType($link, $_SESSION["user_id"]) == 1){
+                ?>
+                <div class="panelContainer--sidebar--menu" onclick="location.href='betaling';">
+                    <i class="fa fa-credit-card"></i> Betaling
+                </div>
+                <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
+                    <i class="fa fa-user-circle-o"></i> Kørelærer
+                </div>
+                <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
+                        <i class="fa fa-user-plus"></i> Vælg kørelærer
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
+                        <i class="fa fa-user"></i> Vurder kørelærer
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
+                        <i class="fa fa-comments-o"></i> Chat
+                    </div>
+                </div>
+                <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" onclick="location.href='skriv-anmeldelse';">
+                    <i class="fa fa-star-o"></i> Skriv anmeldelse
+                </div>
+        <?php
+            } elseif(checkUserType($link, $_SESSION["user_id"]) == 2){
+                ?>
+                <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
+                    <i class="fa fa-user-circle-o"></i> Elever
+                </div>
+                <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
+                        <i class="fa fa-user-plus"></i> Ansøgninger
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
+                        <i class="fa fa-car"></i> Køretimer
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
+                        <i class="fa fa-comments-o"></i> Chat
+                    </div>
+                </div>
+        <?php
+            }
+        ?>
         <div class="panelContainer--sidebar--menu" id="settingsDropdownButton">
             <i class="fa fa-cog"></i> Indstillinger
         </div>

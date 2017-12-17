@@ -15,6 +15,11 @@ function messagebox($style, $message){
     }
 }
 
+function checkUserType($link, $user_id){
+    $checkUserType = mysqli_fetch_assoc(mysqli_query($link, "SELECT usertype FROM users WHERE id='{$user_id}'"));
+    return $checkUserType["usertype"];
+}
+
 function createUser($link, $firstname, $lastname, $phonenumber, $address, $zipcode, $city, $email, $username, $password){
     $username   = strtolower($username);
     $email      = strtolower($email);

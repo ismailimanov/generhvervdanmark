@@ -19,7 +19,7 @@ if($userType["usertype"] == 1){
 <h1>Chat</h1>
 <span class="breadcrumbs">Kørelærer &raquo; Chat</span>
 <div class="content">
-    <form action="<?=$_SERVER["PHP_SELF"]?>" method="post" class="chatForm">
+    <form action="" method="post" class="chatForm">
         <textarea name="message" placeholder="Besked" required></textarea>
         <input type="hidden" name="chat_id" id="chatid" value="<?=$getChatID["id"]?>">
         <?php

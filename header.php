@@ -51,7 +51,7 @@
                         <?php
                     } else {
                         ?>
-                        <li class="btn"><a href="kontrol-panel">Kontrol Panel</a></li>
+                        <li class="btn"><a href="kontrolpanel">Kontrol Panel</a></li>
                     <?php
                     }
                     ?>
