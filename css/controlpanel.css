@@ -1,3 +1,11 @@
+@font-face {
+  font-family: overskrift;
+  src: url("../fonts/segoeuil.ttf"); }
+
+@font-face {
+  font-family: stepOverskrift;
+  src: url("../fonts/segoeui.ttf"); }
+
 * {
   margin: 0;
   padding: 0;

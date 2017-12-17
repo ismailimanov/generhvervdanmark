@@ -15,32 +15,88 @@ if($userType["usertype"] == 1){
 } else {
     $getChatID = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM chat WHERE teacher_id='{$_SESSION["user_id"]}'"));
 }
-?>
-<h1>Chat</h1>
-<span class="breadcrumbs">Kørelærer &raquo; Chat</span>
-<div class="content">
-    <form action="" method="post" class="chatForm">
-        <textarea name="message" placeholder="Besked" required></textarea>
-        <input type="hidden" name="chat_id" id="chatid" value="<?=$getChatID["id"]?>">
-        <?php
-        if($userType["usertype"] == 1){
-            ?>
-            <input type="hidden" name="receiver" id="receiver" value="<?=$getChatID["teacher_id"]?>">
-            <?php
-        } else {
-            ?>
-            <input type="hidden" name="receiver" id="receiver" value="<?=$getChatID["user_id"]?>">
-            <?php
-        }
-        ?>
-        <?php
 
+if(checkUserType($link, $_SESSION["user_id"]) == 1) {
+    ?>
+    <h1>Chat</h1>
+    <span class="breadcrumbs">Kørelærer &raquo; Chat</span>
+    <div class="content">
+        <form action="" method="post" class="chatForm">
+            <textarea name="message" placeholder="Besked" required></textarea>
+            <input type="hidden" name="chat_id" id="chatid" value="<?= $getChatID["id"] ?>">
+            <?php
+            if ($userType["usertype"] == 1) {
+                ?>
+                <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["teacher_id"] ?>">
+                <?php
+            } else {
+                ?>
+                <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["user_id"] ?>">
+                <?php
+            }
+            ?>
+            <?php
+
+            ?>
+            <input type="submit" name="write" value="Skriv">
+        </form>
+        <div class="divider"></div>
+        <div class="chatBoxes"></div>
+    </div>
+    <?php
+}
+if(!isset($_GET["cid"]) && checkUserType($link, $_SESSION["user_id"]) == 2){
+    ?>
+    <h1>Vælg elev</h1>
+    <span class="breadcrumbs">Elever &raquo; Chat</span>
+    <div class="content">
+        <table id="koerelaerer" class="display" cellspacing="0" width="100%" style="width: 100%;">
+            <thead>
+            <tr>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>By</th>
+                <th>Beskeder</th>
+                <th>Chat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?=chatList($link, $_SESSION["user_id"])?>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>By</th>
+                <th>Beskeder</th>
+                <th>Chat</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <?php
+} else {
+    $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE id='{$_GET["cid"]}' AND teacher_id='{$_SESSION["user_id"]}'");
+    if(mysqli_num_rows($checkChat) < 1){
+        messagebox("error", "Dette er ikke din chat.");
+    } else {
         ?>
-        <input type="submit" name="write" value="Skriv">
-    </form>
-    <div class="divider"></div>
-    <div class="chatBoxes"></div>
-</div>
+        <h1>Chat</h1>
+        <span class="breadcrumbs">Kørelærer &raquo; Chat</span>
+        <div class="content">
+            <form action="" method="post" class="chatForm">
+                <textarea name="message" placeholder="Besked" required></textarea>
+                <input type="hidden" name="chat_id" id="chatid" value="<?= $_GET["cid"] ?>">
+                <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["user_id"] ?>">
+                <input type="submit" name="write" value="Skriv">
+            </form>
+            <div class="divider"></div>
+            <div class="chatBoxes"></div>
+        </div>
+        <?php
+    }
+}
+    ?>
 <?php
 include("cp.footer.php");
 ?>

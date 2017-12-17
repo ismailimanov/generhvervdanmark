@@ -11,7 +11,7 @@ if(isset($_POST["update"])){
 <h1>Skift kodeord</h1>
 <span class="breadcrumbs">Indstillinger &raquo; Skift kodeord</span>
 <div class="content">
-    <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
+    <form action="" method="post">
         <input type="password" name="password" placeholder="Nuværende kodeord" required>
         <input type="password" name="newpassword" placeholder="Ny kodeord" required>
         <input type="submit" name="update" value="Opdater">

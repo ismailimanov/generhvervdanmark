@@ -204,3 +204,19 @@ function writeChat($link, $sender, $receiver, $message, $usertype, $chatid){
         }
     }
 }
+
+function chatList($link, $teacher_id){
+    $getChat = mysqli_query($link, "SELECT chat.id AS cid, chat.user_id AS cuid, chat.teacher_id AS ctid, users.id AS uid, users.firstname AS ufn, users.lastname AS uln, users.city AS uc, (SELECT COUNT(*) FROM chatMessage WHERE chatMessage.chat_id = chat.id) AS cma FROM chat JOIN users ON chat.user_id = users.id JOIN chatMessage ON chatMessage.chat_id = chat.id WHERE chat.teacher_id = '{$teacher_id}' GROUP BY cid ORDER BY cid DESC");
+
+    while($chat = mysqli_fetch_array($getChat)){
+        ?>
+        <tr>
+            <td><?=$chat["ufn"]?></td>
+            <td><?=$chat["uln"]?></td>
+            <td><?=$chat["uc"]?></td>
+            <td><?=$chat["cma"]?></td>
+            <td><a href="?cid=<?=$chat["cid"]?>"><i class="fa fa-comments"></i></a></td>
+        </tr>
+        <?php
+    }
+}

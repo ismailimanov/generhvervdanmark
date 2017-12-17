@@ -18,7 +18,7 @@ $info = mysqli_fetch_assoc($getInfo);
 <h1>Brugeroplysninger</h1>
 <span class="breadcrumbs">Indstillinger &raquo; Brugeroplysninger</span>
 <div class="content">
-    <form action="<?=$_SERVER["PHP_SELF"]?>" method="post">
+    <form action="" method="post">
         <input type="text" name="firstname" placeholder="Fornavn" value="<?=$info["firstname"]?>" required>
         <input type="text" name="lastname" placeholder="Efternavn" value="<?=$info["lastname"]?>" required>
         <input type="text" name="phonenumber" placeholder="Telefonnummer" value="<?=$info["phonenumber"]?>" required>

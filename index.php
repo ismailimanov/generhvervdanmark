@@ -71,8 +71,8 @@ include("header.php");
                 <div class="col-1-2">
                     <div class="content">
                         <h1>Hvor meget koster det?</h1>
-                        <p>Det koster kun 1.500kr at tilmelde sig til Generhverv Danmark. Vi har prøvet på at skære ned på unødvendige udgifter, for at kunne gøre det billigere for dig.</p>
-                        <p>Derfor har vi fået udviklet det med avancerede system på markedet, både for at gøre det lettere for dig at bruge og for at presse prisen ned.</p>
+                        <p>Det koster kun 1.500 kr at tilmelde sig til Generhverv Danmark. Vi har prøvet på at skære ned på unødvendige udgifter, for at kunne gøre det billigere for dig.</p>
+                        <p>Derfor har vi fået udviklet det mest avancerede system på markedet, både for at gøre det lettere for dig at bruge og for at presse prisen ned.</p>
                         <p>Vi har kun én pakke og denne pakke indeholder minimumskravet for at bestå køreprøven. I prisen får du adgang til ubegrænset teoriundervisning i form af klasseundervisning i et af vores 6 afdelinger i Storkøbenhavn. Derudover får du også adgang til teoriprøver online og en bog med alt teorien.</p>
                     </div>
                 </div>
