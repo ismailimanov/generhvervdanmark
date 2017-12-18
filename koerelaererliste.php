@@ -1,10 +1,9 @@
 <?php
 include("cp.header.php");
 
-if(isset($_GET["teacherid"])){
-    $teacher      = filter_input(INPUT_GET, 'teacherid', FILTER_SANITIZE_STRING) or messagebox("error", "Ugyldig lærer id");
-
-    selectTeacher($link, $_SESSION["user_id"], $teacher);
+if(isset($_GET["delete"])){
+    $id = filter_input(INPUT_GET, 'delete', FILTER_SANITIZE_STRING) or messagebox("error", "Ugyldig lærer id");
+    deleteTeacher($link, $id);
 }
 
 ?>

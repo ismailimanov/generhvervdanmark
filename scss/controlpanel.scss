@@ -385,7 +385,7 @@ body.form {
           flex-wrap: wrap;
           justify-content: space-between;
 
-          input[type="text"], input[type="password"], input[type="file"] {
+          input[type="text"], input[type="password"], input[type="file"], input[type="tel"], input[type="number"], input[type="email"] {
             width: 49%;
             padding: 10px;
             margin-bottom: 1em;

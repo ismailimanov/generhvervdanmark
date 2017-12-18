@@ -66,12 +66,17 @@ function login($link, $username, $password){
 }
 
 function paymentStatus($link, $user_id){
+    $getUsertype = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM users WHERE id='{$user_id}'"));
     $getPaymentStatus = mysqli_query($link, "SELECT * FROM payment WHERE user_id='{$user_id}'");
 
-    if(mysqli_num_rows($getPaymentStatus) > 0){
+    if (mysqli_num_rows($getPaymentStatus) > 0) {
         return true;
     } else {
-        return false;
+        if($getUsertype["usertype"] == 1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
@@ -420,9 +425,98 @@ function teachers($link){
             </td>
             <td>
                 <a href="rediger-kørelærer?id=<?=$teacher["id"]?>"><i class="fa fa-pencil"></i></a>
-                <a href="?delete=<?=$teacher["id"]?>"><i class="fa fa-times"></i></a>
+                <a href="?delete=<?=$teacher["id"]?>" onclick="return confirm('Er du sikker på at du vil slette kørelæreren?')"><i class="fa fa-times"></i></a>
             </td>
         </tr>
         <?php
+    }
+}
+
+function createTeacher($link, $firstname, $lastname, $phonenumber, $address, $zipcode, $city, $email, $username, $password, $image, $imagetype, $imagefile){
+    $checkUsername = mysqli_query($link, "SELECT * FROM users WHERE username='{$username}'");
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    if(mysqli_num_rows($checkUsername) > 0){
+        messagebox("error", "Brugernavnet er optaget.");
+    } else {
+        $checkEmail = mysqli_query($link, "SELECT * FROM users WHERE email='{$email}'");
+
+        if(mysqli_num_rows($checkEmail) > 0){
+            messagebox("error", "E-mail adressen er optaget.");
+        } else {
+            if(!empty($imagefile["name"])){
+                if($imagetype != "png" && $imagetype != "jpg" && $imagetype != "jpeg"){
+                    messagebox("error", "Billedetypen er ikke understøttet");
+                } else {
+                    if(move_uploaded_file($imagefile["tmp_name"], $image)) {
+                        mysqli_query($link, "INSERT INTO users (firstname, lastname, phonenumber, address, zipcode, city, email, username, password, usertype, imageURL) VALUES ('{$firstname}', '{$lastname}', '{$phonenumber}', '{$address}', '{$zipcode}', '{$city}', '{$email}', '{$username}', '{$password}', '2', '{$image}')");
+
+                        if(mysqli_affected_rows($link) > 0){
+                            messagebox("success", "Kørelæreren er nu tilføjet.");
+                        } else {
+                            messagebox("error", "Kørelæreren kunne ikke tilføjes.");
+                        }
+                    } else {
+                        messagebox("error", "Billedet kunne ikke uploades.");
+                    }
+                }
+            } else {
+                mysqli_query($link, "INSERT INTO users (firstname, lastname, phonenumber, address, zipcode, city, email, username, password, usertype) VALUES ('{$firstname}', '{$lastname}', '{$phonenumber}', '{$address}', '{$zipcode}', '{$city}', '{$email}', '{$username}', '{$password}', '2')");
+
+                if(mysqli_affected_rows($link) > 0){
+                    messagebox("success", "Kørelæreren er nu tilføjet.");
+                } else {
+                    messagebox("error", "Kørelæreren kunne ikke tilføjes.");
+                }
+            }
+        }
+    }
+}
+
+function deleteTeacher($link, $teacher_id){
+    $checkTeacher = mysqli_query($link, "SELECT * FROM users WHERE id='{$teacher_id}' AND usertype='2'");
+
+    if(mysqli_num_rows($checkTeacher) > 0){
+        $getChatIDs = mysqli_query($link, "SELECT * FROM chat WHERE teacher_id='{$teacher_id}'");
+
+        while($ids = mysqli_fetch_array($getChatIDs)){
+            mysqli_query($link, "DELETE FROM chatMessage WHERE chat_id='{$ids["id"]}'");
+        }
+
+        $deleteChat = mysqli_query($link, "DELETE FROM chat WHERE teacher_id='{$teacher_id}'");
+        if($deleteChat){
+            $deleteRating = mysqli_query($link, "DELETE FROM teacherRating WHERE teacher_id='{$teacher_id}'");
+
+            if($deleteRating){
+                $deleteTeacherStudent = mysqli_query($link, "DELETE FROM teacherStudent WHERE teacher_id='{$teacher_id}'");
+
+                if($deleteTeacherStudent){
+                    $deleteTeacher = mysqli_query($link, "DELETE FROM users WHERE id='{$teacher_id}' AND usertype='2'");
+
+                    if($deleteTeacher){
+                        messagebox("success", "Kørelæreren er nu slettet.");
+                    } else {
+                        messagebox("error", "Kunne ikke slette lærerens bruger.");
+                    }
+                } else {
+                    messagebox("error", "Kunne ikke slette lærer-elev relation.");
+                }
+            } else {
+                messagebox("error", "Kunne ikke slette lærerens vurderinger.");
+            }
+        } else {
+            messagebox("error", "Kunne ikke slette kørelærerens chat.");
+        }
+    } else {
+        messagebox("error", "Der findes ikke en kørelærer med dette id");
+    }
+}
+
+function editTeacher($link, $teacher_id, $firstname, $lastname, $phonenumber, $address, $zipcode, $city){
+    mysqli_query($link, "UPDATE users SET firstname='{$firstname}', lastname='{$lastname}', phonenumber='{$phonenumber}', address='{$address}', zipcode='{$zipcode}', city='{$city}' WHERE id='{$teacher_id}'");
+    if(mysqli_affected_rows($link) > 0){
+        messagebox("success", "Oplysninger er nu ændret.");
+    } else {
+        messagebox("error", "Oplysninger kunne ikke ændres.");
     }
 }

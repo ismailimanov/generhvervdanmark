@@ -29,6 +29,7 @@ RewriteRule ^skift-billede skiftbillede\.php
 # Admin kontrolpanel omskrivning
 RewriteRule ^kørelærer-liste koerelaererliste\.php
 RewriteRule ^ny-kørelærer nykoerelaerer\.php
+RewriteRule ^rediger-kørelærer redigerkoerelaerer\.php
 RewriteRule ^elev-liste elevliste\.php
 RewriteRule ^tekster tekster\.php
 
