@@ -86,6 +86,25 @@ if(!isset($_SESSION["user_id"])){
                 </div>
         <?php
             }
+
+            if(checkUserType($link, $_SESSION["user_id"]) == 3){
+                ?>
+                <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
+                    <i class="fa fa-id-badge"></i> Admin
+                </div>
+                <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='kørelærer-liste';">
+                        <i class="fa fa-user-circle-o"></i> Kørelærer
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='elev-liste';">
+                        <i class="fa fa-user-circle"></i> Elever
+                    </div>
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='tekster';">
+                        <i class="fa fa-align-left"></i> Tekster
+                    </div>
+                </div>
+        <?php
+            }
         ?>
         <div class="panelContainer--sidebar--menu" id="settingsDropdownButton">
             <i class="fa fa-cog"></i> Indstillinger
@@ -97,6 +116,15 @@ if(!isset($_SESSION["user_id"])){
             <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='skift-kodeord';">
                 <i class="fa fa-key"></i> Skift kodeord
             </div>
+            <?php
+            if(checkUserType($link, $_SESSION["user_id"]) == 2) {
+                ?>
+                <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='skift-billede';">
+                    <i class="fa fa-picture-o"></i> Skift billede
+                </div>
+                <?php
+            }
+            ?>
         </div>
         <div class="panelContainer--sidebar--menu" onclick="location.href='log-ud';">
             <i class="fa fa-sign-out"></i> Log ud

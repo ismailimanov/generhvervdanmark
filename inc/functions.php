@@ -382,3 +382,19 @@ function paymentSuccessful($link, $user_id, $uxtime, $merchantnumber, $tid, $tch
         messagebox("error", "Fejl i betalingsparameterne. Kontakt os venligst hvis du mener at dette er en fejl.");
     }
 }
+
+function changeImage($link, $user_id, $image, $imagetype, $imagefile){
+    if($imagetype != "png" && $imagetype != "jpg" && $imagetype != "jpeg"){
+        messagebox("error", "Billedetypen er ikke understøttet");
+    } else {
+        if(move_uploaded_file($imagefile["tmp_name"], $image)) {
+            mysqli_query($link, "UPDATE users SET imageURL='{$image}' WHERE id='{$user_id}'");
+
+            if(mysqli_affected_rows($link) > 0){
+                messagebox("success", "Dit billede er nu ændret.");
+            } else {
+                messagebox("error", "Dit billede kunne ikke ændres.");
+            }
+        }
+    }
+}

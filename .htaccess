@@ -24,6 +24,12 @@ RewriteRule ^skift-kodeord skiftkodeord\.php
 RewriteRule ^ansøgninger ansoegninger\.php
 RewriteRule ^accepter accepter\.php
 RewriteRule ^afvis afvis\.php
+RewriteRule ^skift-billede skiftbillede\.php
+
+# Admin kontrolpanel omskrivning
+RewriteRule ^kørelærer-liste koerelaererliste\.php
+RewriteRule ^elev-liste elevliste\.php
+RewriteRule ^tekster tekster\.php
 
 RewriteRule ^log-ud logud\.php
 

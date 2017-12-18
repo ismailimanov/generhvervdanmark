@@ -36,7 +36,7 @@ if(isset($_GET["betalt"])){
         <form action="https://payments.yourpay.se/betalingsvindue.php" method="post" class="chatForm">
             <input type="hidden" name="MerchantNumber" value="60004771">
             <input type="hidden" name="ShopPlatform" value="Generhverv-Danmark">
-            <input type="hidden" name="accepturl" value="http://192.168.0.17:7883/generhvervdanmark/betaling?betalt">
+            <input type="hidden" name="accepturl" value="http://10.50.130.161:7883/generhvervdanmark/betaling?betalt">
             <input type="hidden" name="time" value="<?= time() ?>">
             <input type="hidden" name="autocapture" value="yes">
             <input type="hidden" name="amount" value="150000">
