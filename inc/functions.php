@@ -127,23 +127,23 @@ function teacherList($link){
     $getTeachers = mysqli_query($link, "SELECT * FROM users WHERE usertype='2' ORDER BY rand()");
     while($teacher = mysqli_fetch_array($getTeachers)){
         ?>
-            <tr>
-                <td><img src="<?=$teacher["imageURL"]?>" alt="<?=$teacher["firstname"]?> <?=$teacher["lastname"]?>" class="teacherImage"></td>
-                <td><?=$teacher["firstname"]?></td>
-                <td><?=$teacher["lastname"]?></td>
-                <td><?=$teacher["city"]?></td>
-                <td>
-                    <?php
-                        $getRating = mysqli_fetch_assoc(mysqli_query($link, "SELECT AVG(rating) AS rating FROM teacherRating WHERE teacher_id='{$teacher["id"]}'"));
-                        if(is_null($getRating["rating"])){
-                            echo "Ingen vurdering";
-                        } else {
-                            echo $getRating["rating"];
-                        }
-                    ?>
-                </td>
-                <td><a href="?teacherid=<?=$teacher["id"]?>"><i class="fa fa-check-square-o"></i></a></td>
-            </tr>
+        <tr>
+            <td><img src="<?=$teacher["imageURL"]?>" alt="<?=$teacher["firstname"]?> <?=$teacher["lastname"]?>" class="teacherImage"></td>
+            <td><?=$teacher["firstname"]?></td>
+            <td><?=$teacher["lastname"]?></td>
+            <td><?=$teacher["city"]?></td>
+            <td>
+                <?php
+                $getRating = mysqli_fetch_assoc(mysqli_query($link, "SELECT AVG(rating) AS rating FROM teacherRating WHERE teacher_id='{$teacher["id"]}'"));
+                if(is_null($getRating["rating"])){
+                    echo "Ingen vurdering";
+                } else {
+                    echo $getRating["rating"];
+                }
+                ?>
+            </td>
+            <td><a href="?teacherid=<?=$teacher["id"]?>"><i class="fa fa-check-square-o"></i></a></td>
+        </tr>
         <?php
     }
 }
@@ -396,5 +396,33 @@ function changeImage($link, $user_id, $image, $imagetype, $imagefile){
                 messagebox("error", "Dit billede kunne ikke ændres.");
             }
         }
+    }
+}
+
+function teachers($link){
+    $getTeachers = mysqli_query($link, "SELECT * FROM users WHERE usertype='2' ORDER BY rand()");
+    while($teacher = mysqli_fetch_array($getTeachers)){
+        ?>
+        <tr>
+            <td><img src="<?=$teacher["imageURL"]?>" alt="<?=$teacher["firstname"]?> <?=$teacher["lastname"]?>" class="teacherImage"></td>
+            <td><?=$teacher["firstname"]?></td>
+            <td><?=$teacher["lastname"]?></td>
+            <td><?=$teacher["city"]?></td>
+            <td>
+                <?php
+                $getRating = mysqli_fetch_assoc(mysqli_query($link, "SELECT AVG(rating) AS rating FROM teacherRating WHERE teacher_id='{$teacher["id"]}'"));
+                if(is_null($getRating["rating"])){
+                    echo "Ingen vurdering";
+                } else {
+                    echo $getRating["rating"];
+                }
+                ?>
+            </td>
+            <td>
+                <a href="rediger-kørelærer?id=<?=$teacher["id"]?>"><i class="fa fa-pencil"></i></a>
+                <a href="?delete=<?=$teacher["id"]?>"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+        <?php
     }
 }

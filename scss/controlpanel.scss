@@ -554,6 +554,32 @@ body.form {
           }
         }
       }
+
+      .newButton {
+        float: right;
+        height: 50px;
+        width: 50px;
+        background: $pageColor;
+        border-radius: 100%;
+        display: flex;
+        color: #FFF;
+        justify-content: center;
+        align-items: center;
+        transition: all .3s ease-in-out;
+
+        i {
+          font-size: 1.5em;
+        }
+
+        &:hover {
+          box-shadow: 0px 7px 5px -4px rgba(0,0,0,.3);
+          cursor: pointer;
+        }
+      }
+
+      .fa-times {
+        color: #D32F2F;
+      }
     }
 
     .copyright {
