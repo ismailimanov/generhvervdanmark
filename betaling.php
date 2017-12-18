@@ -1,38 +1,53 @@
 <?php
 include("cp.header.php");
-?>
-<h1>Betaling</h1>
-    <form action="https://payments.yourpay.se/betalingsvindue.php" method="post" class="form contact-form alt clearfix">
-        Dit Forretningsnummer (Vi har indtastet et du kan teste med)<br>
-        <input name="MerchantNumber" type="text" placeholder="Yourpay forretningsnummer" value="60004771"><br>
-        <input name="ShopPlatform" type="TEXT" placeholder="Din shopplatform" value="YourpayTestBetaling-ShopPlatform"><br>
-        URL adressen vi skal returnere til efter betalingen er gennemført
-        <input name="accepturl" type="text" placeholder="https://www.yourpay.io/da-dk/demo/" value="https://www.yourpay.io/da-dk/demo/"><br>
-        Tidsstempel fra din server:
-        <input name="time" type="text" placeholder="Unix Tidsstempel" value="1493029215"><br><br>
-        Autocapture:
-        <input name="autocapture" type="text" value="yes"  placeholder="Ved yes, hæves pengene automatisk når ordren godkendes"><br><br>
-        Beløb: 100 = 1 kr.
-        <input name="amount" type="text" placeholder="Beløb 100 = 1 EUR/DKK/SEK || 1000 = 10 EUR/DKK/SEK" value="5,00"><br><br>
-        Valuta for betalingen:
-        <select name="currency">
-            <option value="208">DKK</option>
-            <option value="978">EUR</option>
-            <option value="758">SEK</option>
-            <option value="840">USD</option>
-        </select>
-        <br><br>
-        Sprog på betalingsvindue<br>
-        <select name="lang">
-            <option value="da-dk">Dansk</option>
-            <option value="en-gb">Engelsk</option>
-            <option value="de-de">Tysk</option>
-            <option value="se-se">Svensk</option>
-            <option value="fr-fr">Fransk</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Klik her for at åbne betalingsvinduet" class="fusion-button button-flat button-round button-large button-custom button-1 btn-orange-hover-light">
-    </form>
-<?php
+
+if(isset($_GET["success"])){
+    messagebox("success", "Din betaling er nu gennemført! Du har nu adgang til de forskellige services.");
+}
+
+if(isset($_GET["betalt"])){
+    $uxtime         = filter_input(INPUT_GET, 'uxtime', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid uxtime");
+    $merchantnumber = filter_input(INPUT_GET, 'MerchantNumber', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid merchantnumber");
+    $tid            = filter_input(INPUT_GET, 'tid', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid tid");
+    $tchecksum      = filter_input(INPUT_GET, 'tchecksum', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid tchecksum");
+    $checksum       = filter_input(INPUT_GET, 'checksum', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid checksum");
+    $orderid        = filter_input(INPUT_GET, 'orderid', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid orderid");
+    $shopplatform   = filter_input(INPUT_GET, 'ShopPlatform', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid shopplatform");
+    $amount         = filter_input(INPUT_GET, 'amount', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid amount");
+    $split          = filter_input(INPUT_GET, 'split', FILTER_SANITIZE_STRING);
+    $date           = filter_input(INPUT_GET, 'date', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid date");
+    $cvc            = filter_input(INPUT_GET, 'cvc', FILTER_SANITIZE_NUMBER_INT);
+    $expmonth       = filter_input(INPUT_GET, 'expmonth', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid expmonth");
+    $expyear        = filter_input(INPUT_GET, 'expyear', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid expyear");
+    $tcardno        = filter_input(INPUT_GET, 'tcardno', FILTER_SANITIZE_STRING) or messagebox("error", "Invalid tcardno");
+    $time           = filter_input(INPUT_GET, 'time', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid time");
+    $cardid         = filter_input(INPUT_GET, 'cardid', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid cardid");
+    $currency       = filter_input(INPUT_GET, 'currency', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid currency");
+
+    paymentSuccessful($link, $_SESSION["user_id"], $uxtime, $merchantnumber, $tid, $tchecksum, $checksum, $orderid, $shopplatform, $amount, $split, $date, $cvc, $expmonth, $expyear, $tcardno, $time, $cardid, $currency);
+} else {
+    ?>
+    <h1>Betaling</h1>
+    <p>Vores system har ikke registreret nogen betaling fra din konto.</p>
+    <p>Du kan klikke på knappen nedenunder for at komme videre til betalingssiden.</p>
+    <p>Hvis du tror at dette er en fejl, bedes du venligst tage kontakt til Generhverv Danmark.</p>
+    <br>
+    <div class="content">
+        <form action="https://payments.yourpay.se/betalingsvindue.php" method="post" class="chatForm">
+            <input type="hidden" name="MerchantNumber" value="60004771">
+            <input type="hidden" name="ShopPlatform" value="Generhverv-Danmark">
+            <input type="hidden" name="accepturl" value="http://192.168.0.17:7883/generhvervdanmark/betaling?betalt">
+            <input type="hidden" name="time" value="<?= time() ?>">
+            <input type="hidden" name="autocapture" value="yes">
+            <input type="hidden" name="amount" value="150000">
+            <input type="hidden" name="currency" value="208">
+            <input type="hidden" name="lang" value="da-dk">
+            <br><br>
+            <input type="submit" value="Klik her for at åbne betalingsvinduet"
+                   class="fusion-button button-flat button-round button-large button-custom button-1 btn-orange-hover-light">
+        </form>
+    </div>
+    <?php
+}
 include("cp.footer.php");
 ?>

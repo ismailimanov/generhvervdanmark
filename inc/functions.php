@@ -346,3 +346,38 @@ function checkChat($link, $user_id){
         return false;
     }
 }
+
+function paymentSuccessful($link, $user_id, $uxtime, $merchantnumber, $tid, $tchecksum, $checksum, $orderid, $shopplatform, $amount, $split, $date, $cvc, $expmonth, $expyear, $tcardno, $time, $cardid, $currency){
+    if(!empty($uxtime) && !empty($merchantnumber) && !empty($tid) && !empty($tchecksum) && !empty($checksum) && !empty($orderid) && !empty($shopplatform) && !empty($amount) && $split != "" && !empty($date) && !empty($expmonth) && !empty($expyear) && !empty($tcardno) && !empty($time) && !empty($cardid) && !empty($currency)){
+        if($tchecksum == $checksum){
+            if($shopplatform == "Generhverv-Danmark"){
+                if($amount == "150000.00"){
+                    mysqli_query($link, "INSERT INTO payment (user_id) VALUES ('{$user_id}')");
+                    
+                    if(mysqli_affected_rows($link) > 0){
+                        $getPaymentID = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM payment WHERE user_id='{$user_id}'"));
+                        $paymentID = $getPaymentID["id"];
+                        mysqli_query($link, "INSERT INTO paymentInfo (payment_id, uxtime, MerchantNumber, tid, tchecksum, checksum, orderid, ShopPlatform, amount, split, `date`, cvc, expmonth, expyear, tcardno, `time`, cardid, currency) VALUES ('{$paymentID}', '{$uxtime}', '{$merchantnumber}', '{$tid}', '{$tchecksum}', '{$checksum}', '{$orderid}', '{$shopplatform}', '{$amount}', '{$split}', '{$date}', '{$cvc}', '{$expmonth}', '{$expyear}', '{$tcardno}', '{$time}', '{$cardid}', '{$currency}')");
+
+                        if(mysqli_affected_rows($link) > 0){
+                            header("Location: betaling?success");
+                            exit();
+                        } else {
+                            messagebox("error", "Kunne ikke oprette betalings info i databasen. Kontakt os hvis du mener at dette er en fejl.");
+                        }
+                    } else {
+                        messagebox("error", "Kunne ikke oprette betalingen i databasen. Kontakt os hvis du mener at dette er en fejl.");
+                    }
+                } else {
+                    messagebox("error", "Det rigtige beløb er ikke blevet betalt. Kontakt os venligst hvis du mener at dette er en fejl.");
+                }
+            } else {
+                messagebox("error", "Fejl i ShopPlatform. Kontakt os venligst hvis du mener at dette er en fejl.");
+            }
+        } else {
+            messagebox("error", "Checksum matcher ikke. Kontakt os venligst hvis du mener at dette er en fejl.");
+        }
+    } else {
+        messagebox("error", "Fejl i betalingsparameterne. Kontakt os venligst hvis du mener at dette er en fejl.");
+    }
+}
