@@ -520,3 +520,20 @@ function editTeacher($link, $teacher_id, $firstname, $lastname, $phonenumber, $a
         messagebox("error", "Oplysninger kunne ikke ændres.");
     }
 }
+
+function students($link){
+    $getStudents = mysqli_query($link, "SELECT * FROM users WHERE usertype='1' ORDER BY rand()");
+    while($student = mysqli_fetch_array($getStudents)){
+        ?>
+        <tr>
+            <td><?=$student["firstname"]?></td>
+            <td><?=$student["lastname"]?></td>
+            <td><?=$student["city"]?></td>
+            <td><?=$student["phonenumber"]?></td>
+            <td>
+                <a href="?delete=<?=$student["id"]?>" onclick="return confirm('Er du sikker på at du vil slette kørelæreren?')"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+        <?php
+    }
+}
