@@ -128,6 +128,7 @@ function teacherList($link){
     while($teacher = mysqli_fetch_array($getTeachers)){
         ?>
             <tr>
+                <td><img src="<?=$teacher["imageURL"]?>" alt="<?=$teacher["firstname"]?> <?=$teacher["lastname"]?>" class="teacherImage"></td>
                 <td><?=$teacher["firstname"]?></td>
                 <td><?=$teacher["lastname"]?></td>
                 <td><?=$teacher["city"]?></td>

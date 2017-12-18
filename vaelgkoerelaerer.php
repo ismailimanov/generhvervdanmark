@@ -14,6 +14,7 @@ if(isset($_GET["teacherid"])){
     <table id="koerelaerer" class="display" cellspacing="0" width="100%" style="width: 100%;">
         <thead>
             <tr>
+                <th>Billede</th>
                 <th>Fornavn</th>
                 <th>Efternavn</th>
                 <th>By</th>
@@ -26,6 +27,7 @@ if(isset($_GET["teacherid"])){
         </tbody>
         <tfoot>
             <tr>
+                <th>Billede</th>
                 <th>Fornavn</th>
                 <th>Efternavn</th>
                 <th>By</th>

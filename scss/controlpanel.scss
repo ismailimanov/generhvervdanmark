@@ -526,6 +526,17 @@ body.form {
           }
         }
 
+        #koerelaerer {
+
+          img.teacherImage {
+            width: 100%;
+            max-width: 50px;
+            border-radius: 100%;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+
         #koerelaerer tbody tr td:last-of-type {
           text-align: center;
 

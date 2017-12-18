@@ -500,6 +500,12 @@ body.form {
             -webkit-align-self: flex-end;
             -ms-flex-item-align: end;
             align-self: flex-end; }
+        .panelContainer--content--container .content #koerelaerer img.teacherImage {
+          width: 100%;
+          max-width: 50px;
+          border-radius: 100%;
+          display: block;
+          margin: 0 auto; }
         .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type {
           text-align: center; }
           .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a {
