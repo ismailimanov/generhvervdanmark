@@ -19,6 +19,7 @@ if(!isset($_SESSION["user_id"])){
     <script src="https://use.fontawesome.com/bca656bdb8.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=brh2k94otmm4ce9dyc3zzo7by8xm2wwz7xybzy6spvsrfpza"></script>
     <script src="js/controlpanel.js"></script>
 </head>
 <body>

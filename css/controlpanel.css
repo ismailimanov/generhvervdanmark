@@ -343,6 +343,22 @@ body.form {
         font-size: .9em;
         display: block;
         margin-bottom: 1em; }
+      .panelContainer--content--container .panelText input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border-radius: 7px;
+        border: none;
+        background: #43A047;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: #FFF; }
+        .panelContainer--content--container .panelText input[type="submit"]:hover {
+          cursor: pointer; }
+        .panelContainer--content--container .panelText input[type="submit"]:focus {
+          outline: none; }
+        .panelContainer--content--container .panelText input[type="submit"]:active {
+          outline: none; }
       .panelContainer--content--container .info:last-of-type {
         margin-bottom: 10px; }
       .panelContainer--content--container .content {

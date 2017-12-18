@@ -590,3 +590,13 @@ function deleteStudent($link, $user_id){
         messagebox("error", "Der findes ikke en elev med dette id");
     }
 }
+
+function updateFrontpage($link, $panelText){
+    mysqli_query($link, "UPDATE panelText SET panelText='{$panelText}' WHERE id='1'");
+
+    if(mysqli_affected_rows($link) > 0){
+        messagebox("success", "Teksten er nu opdateret.");
+    } else {
+        messagebox("error", "Kunne ikke opdatere teksten.");
+    }
+}
