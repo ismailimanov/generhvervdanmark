@@ -80,9 +80,6 @@ if(!isset($_SESSION["user_id"])){
                     <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='ansøgninger';">
                         <i class="fa fa-user-plus"></i> Ansøgninger
                     </div>
-                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
-                        <i class="fa fa-car"></i> Køretimer
-                    </div>
                     <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
                         <i class="fa fa-comments-o"></i> Chat
                     </div>
