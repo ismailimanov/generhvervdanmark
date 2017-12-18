@@ -16,13 +16,20 @@ if($userType["usertype"] == 1){
     $getChatID = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM chat WHERE teacher_id='{$_SESSION["user_id"]}'"));
 }
 
+if(isset($_POST["new"])){
+    $receiver = filter_input(INPUT_POST, 'receiver', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid modtager id");
+    $chatid   = filter_input(INPUT_POST, 'chat_id', FILTER_SANITIZE_NUMBER_INT) or messagebox("error", "Invalid chat id");
+
+    newTeacher($link, $_SESSION["user_id"], $receiver, $chatid);
+}
+
 if(checkUserType($link, $_SESSION["user_id"]) == 1) {
+    $checkRejected = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$_SESSION["user_id"]}'"));
     ?>
     <h1>Chat</h1>
     <span class="breadcrumbs">Kørelærer &raquo; Chat</span>
     <div class="content">
         <form action="" method="post" class="chatForm">
-            <textarea name="message" placeholder="Besked" required></textarea>
             <input type="hidden" name="chat_id" id="chatid" value="<?= $getChatID["id"] ?>">
             <?php
             if ($userType["usertype"] == 1) {
@@ -34,12 +41,36 @@ if(checkUserType($link, $_SESSION["user_id"]) == 1) {
                 <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["user_id"] ?>">
                 <?php
             }
-            ?>
-            <?php
 
+            if($checkRejected["accepted"] == 1){
+                ?>
+                <textarea name="message" placeholder="Besked" required></textarea>
+                <input type="submit" name="write" value="Skriv">
+                <?php
+            }
             ?>
-            <input type="submit" name="write" value="Skriv">
         </form>
+        <?php
+            if($checkRejected["accepted"] == 0) {
+                ?>
+                <form action="" method="post" class="chatForm">
+                    <input type="hidden" name="chat_id" id="chatid" value="<?= $getChatID["id"] ?>">
+                    <?php
+                    if ($userType["usertype"] == 1) {
+                        ?>
+                        <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["teacher_id"] ?>">
+                        <?php
+                    } else {
+                        ?>
+                        <input type="hidden" name="receiver" id="receiver" value="<?= $getChatID["user_id"] ?>">
+                        <?php
+                    }
+                    ?>
+                    <input type="submit" name="new" value="Vælg ny kørelærer">
+                </form>
+                <?php
+            }
+        ?>
         <div class="divider"></div>
         <div class="chatBoxes"></div>
     </div>

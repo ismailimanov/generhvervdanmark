@@ -30,23 +30,42 @@ if(!isset($_SESSION["user_id"])){
         </div>
         <?php
             if(checkUserType($link, $_SESSION["user_id"]) == 1){
+                if(paymentStatus($link, $_SESSION["user_id"]) == false) {
+                    ?>
+                    <div class="panelContainer--sidebar--menu" onclick="location.href='betaling';">
+                        <i class="fa fa-credit-card"></i> Betaling
+                    </div>
+                <?php
+                }
                 ?>
-                <div class="panelContainer--sidebar--menu" onclick="location.href='betaling';">
-                    <i class="fa fa-credit-card"></i> Betaling
-                </div>
                 <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" <?php if(paymentStatus($link, $_SESSION["user_id"]) == true){ echo 'id="teacherDropdownButton"';}?>>
                     <i class="fa fa-user-circle-o"></i> Kørelærer
                 </div>
                 <div class="panelContainer--sidebar--dropdown" id="teacherDropdown">
-                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
-                        <i class="fa fa-user-plus"></i> Vælg kørelærer
-                    </div>
-                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vurder-kørelærer';">
-                        <i class="fa fa-user"></i> Vurder kørelærer
-                    </div>
-                    <div class="panelContainer--sidebar--dropdown--menu"onclick="location.href='chat';">
-                        <i class="fa fa-comments-o"></i> Chat
-                    </div>
+                    <?php
+                    if(checkTeacher($link, $_SESSION["user_id"]) == false) {
+                        ?>
+                        <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='vælg-kørelærer';">
+                            <i class="fa fa-user-plus"></i> Vælg kørelærer
+                        </div>
+                        <?php
+                    }
+                    if(checkValidTeacher($link, $_SESSION["user_id"]) == true) {
+                        ?>
+                        <div class="panelContainer--sidebar--dropdown--menu"
+                             onclick="location.href='vurder-kørelærer';">
+                            <i class="fa fa-user"></i> Vurder kørelærer
+                        </div>
+                        <?php
+                    }
+                    if(checkChat($link, $_SESSION["user_id"]) == true) {
+                        ?>
+                        <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='chat';">
+                            <i class="fa fa-comments-o"></i> Chat
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <div class="panelContainer--sidebar--menu<?php if(paymentStatus($link, $_SESSION["user_id"]) == false){ echo " disabled";}?>" onclick="location.href='skriv-anmeldelse';">
                     <i class="fa fa-star-o"></i> Skriv anmeldelse

@@ -269,3 +269,80 @@ function acceptStudent($link, $teacher_id, $id, $message){
         messagebox("error", "Dette er ikke en af dine elever.");
     }
 }
+
+function rejectStudent($link, $teacher_id, $id, $message){
+    $checkStudent = mysqli_query($link, "SELECT * FROM teacherStudent WHERE teacher_id='{$teacher_id}' AND id='{$id}'");
+
+    if(mysqli_num_rows($checkStudent) > 0){
+        $studentInfo = mysqli_fetch_assoc($checkStudent);
+        mysqli_query($link, "INSERT INTO chat (user_id, teacher_id) VALUES ('{$studentInfo["user_id"]}', '{$teacher_id}')");
+
+        if(mysqli_affected_rows($link) > 0){
+            $getChatID = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM chat WHERE teacher_id='{$teacher_id}' AND user_id='{$studentInfo["user_id"]}'"));
+            mysqli_query($link, "INSERT INTO chatMessage (sender, receiver, message, chat_id) VALUES ('$teacher_id', '{$studentInfo["user_id"]}', '{$message}', '{$getChatID["id"]}')");
+
+            if(mysqli_affected_rows($link) > 0){
+                messagebox("success", "Du har nu afvist eleven.");
+            } else {
+                messagebox("error", "Fejl under sendelse af besked.");
+            }
+        } else {
+            messagebox("error", "Fejl under oprettelse af chat.");
+        }
+    } else {
+        messagebox("error", "Dette er ikke en af dine elever.");
+    }
+}
+
+function newTeacher($link, $user_id, $teacher_id, $chat_id){
+    mysqli_query($link, "DELETE FROM chatMessage WHERE chat_id='{$chat_id}'");
+
+    if(mysqli_affected_rows($link) > 0){
+        mysqli_query($link, "DELETE FROM chat WHERE id='{$chat_id}'");
+
+        if(mysqli_affected_rows($link) > 0){
+            mysqli_query($link, "DELETE FROM teacherStudent WHERE user_id='{$user_id}'");
+
+            if(mysqli_affected_rows($link) > 0){
+                header("Location: kontrolpanel");
+                exit();
+            } else {
+                messagebox("error", "Kunne ikke slette kørelærer. Prøv igen.");
+            }
+        } else {
+            messagebox("error", "Kunne ikke slette chat. Prøv igen.");
+        }
+    } else {
+        messagebox("error", "Kunne ikke slette beskeder. Prøv igen.");
+    }
+}
+
+function checkTeacher($link, $user_id){
+    $checkTeacher = mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$user_id}'");
+
+    if(mysqli_num_rows($checkTeacher) > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkValidTeacher($link, $user_id){
+    $checkValidTeacher = mysqli_query($link, "SELECT * FROM teacherStudent WHERE user_id='{$user_id}' AND accepted='1'");
+
+    if(mysqli_num_rows($checkValidTeacher) > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkChat($link, $user_id){
+    $checkChat = mysqli_query($link, "SELECT * FROM chat WHERE user_id='{$user_id}'");
+
+    if(mysqli_num_rows($checkChat) > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
