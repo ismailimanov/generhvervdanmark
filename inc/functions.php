@@ -531,6 +531,7 @@ function students($link){
             <td><?=$student["city"]?></td>
             <td><?=$student["phonenumber"]?></td>
             <td>
+                <a href="profil?id=<?=$student["id"]?>"><i class="fa fa-user" title="Profil"></i></a>&nbsp;
                 <a href="?delete=<?=$student["id"]?>" onclick="return confirm('Er du sikker på at du vil slette eleven?')"><i class="fa fa-times"></i></a>
             </td>
         </tr>

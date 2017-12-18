@@ -555,6 +555,43 @@ body.form {
         }
       }
 
+      .profile {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &--item {
+          width: 50%;
+          margin-bottom: 1em;
+
+          &--heading {
+            text-transform: uppercase;
+            font-size: .8em;
+            display: block;
+
+            &--bold {
+              font-weight: 700;
+            }
+          }
+        }
+
+        &--divider {
+          width: 100%;
+          border-bottom: 1px dotted #CCC;
+        }
+
+        h2 {
+          font-weight: 400;
+          text-transform: uppercase;
+          margin: .5em 0;
+          width: 100%;
+
+          .bold {
+            font-weight: 700;
+          }
+        }
+      }
+
       .newButton {
         float: right;
         height: 50px;

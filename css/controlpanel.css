@@ -515,6 +515,38 @@ body.form {
             text-decoration: none; }
           .panelContainer--content--container .content #koerelaerer tbody tr td:last-of-type a .reject {
             color: #E53935; }
+      .panelContainer--content--container .profile {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+        .panelContainer--content--container .profile--item {
+          width: 50%;
+          margin-bottom: 1em; }
+          .panelContainer--content--container .profile--item--heading {
+            text-transform: uppercase;
+            font-size: .8em;
+            display: block; }
+            .panelContainer--content--container .profile--item--heading--bold {
+              font-weight: 700; }
+        .panelContainer--content--container .profile--divider {
+          width: 100%;
+          border-bottom: 1px dotted #CCC; }
+        .panelContainer--content--container .profile h2 {
+          font-weight: 400;
+          text-transform: uppercase;
+          margin: .5em 0;
+          width: 100%; }
+          .panelContainer--content--container .profile h2 .bold {
+            font-weight: 700; }
       .panelContainer--content--container .newButton {
         float: right;
         height: 50px;

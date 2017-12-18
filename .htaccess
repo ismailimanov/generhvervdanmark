@@ -32,6 +32,7 @@ RewriteRule ^ny-kørelærer nykoerelaerer\.php
 RewriteRule ^rediger-kørelærer redigerkoerelaerer\.php
 RewriteRule ^elev-liste elevliste\.php
 RewriteRule ^tekster tekster\.php
+RewriteRule ^profil profil\.php
 
 RewriteRule ^log-ud logud\.php
 
