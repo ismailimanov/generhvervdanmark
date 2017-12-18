@@ -3,7 +3,7 @@ include("cp.header.php");
 
 if(isset($_GET["delete"])){
     $id = filter_input(INPUT_GET, 'delete', FILTER_SANITIZE_STRING) or messagebox("error", "Ugyldig lærer id");
-    deleteTeacher($link, $id);
+    deleteStudent($link, $id);
 }
 
 ?>

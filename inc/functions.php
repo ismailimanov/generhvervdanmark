@@ -522,7 +522,7 @@ function editTeacher($link, $teacher_id, $firstname, $lastname, $phonenumber, $a
 }
 
 function students($link){
-    $getStudents = mysqli_query($link, "SELECT * FROM users WHERE usertype='1' ORDER BY rand()");
+    $getStudents = mysqli_query($link, "SELECT * FROM users WHERE usertype='1' ORDER BY id DESC");
     while($student = mysqli_fetch_array($getStudents)){
         ?>
         <tr>
@@ -531,9 +531,61 @@ function students($link){
             <td><?=$student["city"]?></td>
             <td><?=$student["phonenumber"]?></td>
             <td>
-                <a href="?delete=<?=$student["id"]?>" onclick="return confirm('Er du sikker på at du vil slette kørelæreren?')"><i class="fa fa-times"></i></a>
+                <a href="?delete=<?=$student["id"]?>" onclick="return confirm('Er du sikker på at du vil slette eleven?')"><i class="fa fa-times"></i></a>
             </td>
         </tr>
         <?php
+    }
+}
+
+function deleteStudent($link, $user_id){
+    $checkStudent = mysqli_query($link, "SELECT * FROM users WHERE id='{$user_id}' AND usertype='1'");
+
+    if(mysqli_num_rows($checkStudent) > 0){
+        $getChatIDs = mysqli_query($link, "SELECT * FROM chat WHERE user_id='{$user_id}'");
+
+        while($ids = mysqli_fetch_array($getChatIDs)){
+            mysqli_query($link, "DELETE FROM chatMessage WHERE chat_id='{$ids["id"]}'");
+        }
+
+        $deleteChat = mysqli_query($link, "DELETE FROM chat WHERE user_id='{$user_id}'");
+        if($deleteChat){
+            $deleteReview = mysqli_query($link, "DELETE FROM reviews WHERE user_id='{$user_id}'");
+
+            if($deleteReview){
+                $deleteTeacherStudent = mysqli_query($link, "DELETE FROM teacherStudent WHERE user_id='{$user_id}'");
+
+                if($deleteTeacherStudent){
+                    $getPaymentID = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM payment WHERE user_id='{$user_id}'"));
+                    $deletePaymentInfo = mysqli_query($link, "DELETE FROM paymentInfo WHERE payment_id='{$getPaymentID["id"]}'");
+
+                    if($deletePaymentInfo){
+                        $deletePayment = mysqli_query($link, "DELETE FROM payment WHERE user_id='{$user_id}'");
+
+                        if($deletePayment){
+                            $deleteStudent = mysqli_query($link, "DELETE FROM users WHERE id='{$user_id}' AND usertype='1'");
+
+                            if($deleteStudent){
+                                messagebox("success", "Eleven er nu slettet.");
+                            } else {
+                                messagebox("error", "Kunne ikke slette elevens bruger.");
+                            }
+                        } else {
+                            messagebox("error", "Kunne ikke slette betaling.");
+                        }
+                    } else {
+                        messagebox("error", "Kunne ikke slette betalingsoplysninger.");
+                    }
+                } else {
+                    messagebox("error", "Kunne ikke slette elev-lærer relation.");
+                }
+            } else {
+                messagebox("error", "Kunne ikke slette elevens vurderinger.");
+            }
+        } else {
+            messagebox("error", "Kunne ikke slette elevens chat.");
+        }
+    } else {
+        messagebox("error", "Der findes ikke en elev med dette id");
     }
 }
