@@ -103,6 +103,9 @@ if(!isset($_SESSION["user_id"])){
                     <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='tekster';">
                         <i class="fa fa-align-left"></i> Tekster
                     </div>
+                    <div class="panelContainer--sidebar--dropdown--menu" onclick="location.href='anmeldelser';">
+                        <i class="fa fa-star-o"></i> Anmeldelser
+                    </div>
                 </div>
         <?php
             }

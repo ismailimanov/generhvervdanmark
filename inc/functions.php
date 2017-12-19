@@ -600,3 +600,29 @@ function updateFrontpage($link, $panelText){
         messagebox("error", "Kunne ikke opdatere teksten.");
     }
 }
+
+function reviews($link){
+    $getReviews = mysqli_query($link, "SELECT reviews.id AS rid, reviews.user_id AS uid, reviews.review AS rv, users.firstname AS fn, users.lastname AS ln FROM reviews JOIN users ON reviews.user_id = users.id WHERE reviews.accepted='0' ORDER BY reviews.id DESC");
+    while($review = mysqli_fetch_array($getReviews)){
+        ?>
+        <tr>
+            <td><?=$review["fn"]?></td>
+            <td><?=$review["ln"]?></td>
+            <td><?=$review["rv"]?></td>
+            <td>
+                <a href="?accept=<?=$review["rid"]?>"><i class="fa fa-check" title="Accepter"></i></a>
+            </td>
+        </tr>
+        <?php
+    }
+}
+
+function acceptReview($link, $review_id){
+    mysqli_query($link, "UPDATE reviews SET accepted='1' WHERE id='{$review_id}'");
+
+    if(mysqli_affected_rows($link) > 0){
+        messagebox("success", "Anmeldelsen er nu offentliggjort.");
+    } else {
+        messagebox("error", "Kunne ikke acceptere anmeldelsen.");
+    }
+}
